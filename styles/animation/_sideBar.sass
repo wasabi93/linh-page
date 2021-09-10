@@ -4,6 +4,14 @@
     #{$property}: $value
 
 .sideBarContainer
+    @include prefix(animation, bG 1.5s, moz webkit o ms)
+    @keyframes bG
+        0%
+            transform: translateX(-25vw)
+            opacity: 0
+        100%
+            transform: translateX(0)
+            opacity: 1
     .logo
         @include prefix(animation, logoFadeDown 3s, moz webkit o ms)
         @keyframes logoFadeDown
