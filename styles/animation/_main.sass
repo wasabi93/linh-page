@@ -1,0 +1,47 @@
+@mixin prefix($property, $value, $prefixes)
+    @each $prefix in $prefixes
+        -#{$prefix}-#{$property}: $value
+    #{$property}: $value
+    
+    
+.mainContainer
+    .mainGif
+        @include prefix(animation, gifFadeIn 2s, webkid moz o ms )
+        @keyframes gifFadeIn
+            0%
+                opacity: 0
+            100%
+                opacity: 1
+        @-webkit-keyframes gifFadeIn
+            0%
+                opacity: 0
+            100%
+                opacity: 1
+        @-moz-keyframes gifFadeIn
+            0%
+                opacity: 0
+            100%
+                opacity: 1
+    .introduce
+        @include prefix(animation, introFadeIn 2s, webkid moz o ms )
+        @keyframes introFadeIn
+            0%
+                opacity: 0
+            70%
+                opacity: 0
+            100%
+                opacity: 1
+        @-webkit-keyframes introFadeIn
+            0%
+                opacity: 0
+            70%
+                opacity: 0
+            100%
+                opacity: 1
+        @-moz-keyframes introFadeIn
+            0%
+                opacity: 0
+            70%
+                opacity: 0
+            100%
+                opacity: 1

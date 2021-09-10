@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Urbanist:wght@500&display=swap');
+
+$color--a: #DC6C5C
+$hover--a: #6280C1
+$main--a: #f9f9f8
+
+$font--a: Montserrat
+$font--b: Urbanist
+
+
+.container
+    .homeContainer
+        background-color: $main--a
+        display: grid
+        grid-template-columns: minmax(150px, 25%) 1fr
+        min-height: 100vh
+        @import 'animation/sideBar'
+        @import 'animation/main'
+        .sideBarContainer
+            background: url('../public/sideBar.svg')
+            display: grid
+            place-items: center
+            .logo
+                min-width: 20vw 
+            .navLink
+                font-family: $font--a
+                font-size: 1.5em
+                .navIcon
+                    display: flex
+                    li
+                        padding: 3px
+                ul
+                    li
+                        padding: 5px
+                a
+                    color: $color--a
+                    &:visited
+                        text-decoration: none  
+                    &:hover
+                        color: $hover--a          
+        .mainContainer
+            display: grid
+            place-items: center
+            padding: 2em
+            margin: 5em auto   
+            .mainGif
+                width: 30vw
+            .introduce
+                padding: 0 10vw
+                color: $color--a
+                font-size: 1.5em
+                font-family: $font--b
+

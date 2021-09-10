@@ -1,0 +1,70 @@
+@mixin prefix($property, $value, $prefixes)
+    @each $prefix in $prefixes
+        -#{$prefix}-#{$property}: $value
+    #{$property}: $value
+
+.sideBarContainer
+    .logo
+        @include prefix(animation, logoFadeDown 3s, moz webkit o ms)
+        @keyframes logoFadeDown
+            0%
+                transform: translateY(-40vh)
+                opacity: 0
+            50%
+                transform: translateY(-20vh)
+                opacity: 0
+            100%
+                transform: translateY(0)
+                opacity: 1
+        @-webkit-keyframes logoFadeDown
+            0%
+                transform: translateY(-40vh)
+                opacity: 0
+            50%
+                transform: translateY(-20vh)
+                opacity: 0
+            100%
+                transform: translateY(0)
+                opacity: 1
+        @-moz-keyframes logoFadeDown
+            0%
+                transform: translateY(-40vh)
+                opacity: 0
+            50%
+                transform: translateY(-20vh)
+                opacity: 0
+            100%
+                transform: translateY(0)
+                opacity: 1
+    .navLink
+        @include prefix(animation, linkFadeDown 3s, moz webkit o ms)
+        @keyframes linkFadeDown
+            0%
+                transform: translateY(-40vh)
+                opacity: 0
+            50%
+                transform: translateY(-20vh)
+                opacity: 0
+            100%
+                transform: translateY(0)
+                opacity: 1
+        @-webkit-keyframes linkFadeDown
+            0%
+                transform: translateY(-40vh)
+                opacity: 0
+            50%
+                transform: translateY(-20vh)
+                opacity: 0
+            100%
+                transform: translateY(0)
+                opacity: 1
+        @-moz-keyframes linkFadeDown
+            0%
+                transform: translateY(-40vh)
+                opacity: 0
+            50%
+                transform: translateY(-20vh)
+                opacity: 0
+            100%
+                transform: translateY(0)
+                opacity: 1
