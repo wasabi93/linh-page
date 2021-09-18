@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-import Home from '../components/Home'
+import NewHP from '../components/newHP'
 import home from '../styles/home.module.sass'
 
 export default function HomePage() {
@@ -9,7 +9,7 @@ export default function HomePage() {
       <Head>
         <title>HomePage</title>
       </Head>
-      <Home />
+      <NewHP />
     </div>
   )
 }

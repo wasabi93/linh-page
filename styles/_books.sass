@@ -1,0 +1,50 @@
+.books
+    position: relative
+    display: grid
+    grid-template-columns: 1fr 1fr
+    height: 100%
+    width: 100%
+    .leftBooks
+        position: relative
+        .blueOne
+            position: absolute
+            bottom: 32%
+            width: 100%
+            &:hover
+                left: -15%
+                width: 130%
+                z-index: 10
+        .yellowOne
+            position: absolute
+            bottom: 6%
+            width: 100%
+            &:hover
+                left: -25%
+                width: 150%
+                z-index: 10
+    .rightBooks
+        position: relative
+        .redOne
+            position: absolute
+            bottom: 10%
+            height: auto
+            width: 30%
+            &:hover
+                width: 40%
+                z-index: 10
+        .pinkOne
+            position: absolute
+            bottom: 12%
+            right: 30%
+            width: 50%
+            &:hover
+                width: 60%
+                z-index: 10
+        .yellowTwo
+            position: absolute
+            right: 7%
+            bottom: 8%
+            width: 50%
+            &:hover
+                width: 60%
+                z-index: 10
