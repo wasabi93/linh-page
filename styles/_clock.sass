@@ -2,7 +2,7 @@
     @each $prefix in $prefixes
         -#{$prefix}-#{$property}: $value
     #{$property}: $value
-    
+
 $second: 1s
 $minute: $second * 60
 $hour: $minute * 60
@@ -10,6 +10,22 @@ $timeHour: 14
 $timeMin: 16
 $shiftHour: $timeHour * $hour
 $shiftMin: $timeMin * $minute
+
+@keyframes rotate
+    from
+        transform: rotate(0)
+    to
+        transform: rotate(1turn)
+@-webkit-keyframes rotate
+    from
+        transform: rotate(0)
+    to
+        transform: rotate(1turn)
+@-moz-keyframes rotate
+    from
+        transform: rotate(0)
+    to
+        transform: rotate(1turn)
 
 .clock
     position: relative
@@ -21,28 +37,18 @@ $shiftMin: $timeMin * $minute
         height: 60px
         top: 50%
         left: calc(50% - 14px)
-        animation: rotate linear $hour * 12 infinite
+        @include prefix(animation, rotate linear $hour * 12 infinite, webkid moz o ms)
         animation-delay: ($shiftHour + $shiftMin) * -1
         transform-origin: center 0
-        @keyframes rotate
-            from
-                transform: rotate(0)
-            to
-                transform: rotate(1turn)
     .minHand
         position: absolute
         width: 16px
         height: 40px
         top: 50%
         left: calc(50% - 12px)
-        animation: rotate linear $hour infinite
+        @include prefix(animation, rotate linear $hour infinite, webkid moz o ms)
         animation-delay: $shiftMin * -1
         transform-origin: center 0
-        @keyframes rotate
-            from
-                transform: rotate(0)
-            to
-                transform: rotate(1turn)
     .secHand
         position: absolute
         width: 14px
@@ -51,18 +57,3 @@ $shiftMin: $timeMin * $minute
         left: calc(50% - 10px)
         @include prefix(animation, rotate steps(60) $minute infinite, webkid moz o ms)
         transform-origin: center 0
-        @keyframes rotate
-            from
-                transform: rotate(0)
-            to
-                transform: rotate(1turn)
-        @-webkit-keyframes rotate
-            from
-                transform: rotate(0)
-            to
-                transform: rotate(1turn)
-        @-moz-keyframes rotate
-            from
-                transform: rotate(0)
-            to
-                transform: rotate(1turn)
