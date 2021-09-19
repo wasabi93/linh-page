@@ -1,0 +1,71 @@
+@mixin prefix($property, $value, $prefixes)
+    @each $prefix in $prefixes
+        -#{$prefix}-#{$property}: $value
+    #{$property}: $value
+
+@keyframes BgFadeIn
+    0%
+        opacity: 0
+    25%
+        opacity: 0
+    100%
+        opacity: 1
+@-webkit-keyframes BgFadeIn
+    0%
+        opacity: 0
+    25%
+        opacity: 0
+    100%
+        opacity: 1
+@-moz-keyframes BgFadeIn
+    0%
+        opacity: 0
+    25%
+        opacity: 0
+    100%
+        opacity: 1
+
+@keyframes StuffFadeIn
+    0%
+        opacity: 0
+    50%
+        opacity: 0
+    100%
+        opacity: 1
+@-webkit-keyframes StuffFadeIn
+    0%
+        opacity: 0
+    50%
+        opacity: 0
+    100%
+        opacity: 1
+@-moz-keyframes StuffFadeIn
+    0%
+        opacity: 0
+    50%
+        opacity: 0
+    100%
+        opacity: 1
+
+
+.bgContainer
+    @include prefix(animation, BgFadeIn 2s , webkid moz o ms)
+    .clockContainer
+        @include prefix(animation, StuffFadeIn 2.5s , webkid moz o ms)
+    .booksContainer
+        @include prefix(animation, StuffFadeIn 2.5s , webkid moz o ms)
+    .lambContainer
+        @include prefix(animation, StuffFadeIn 2.5s , webkid moz o ms)
+    .boardContainer
+        @include prefix(animation, StuffFadeIn 2.5s , webkid moz o ms)
+    .laptop
+        @include prefix(animation, StuffFadeIn 2.5s , webkid moz o ms)
+    .wallNote
+        @include prefix(animation, StuffFadeIn 2.5s , webkid moz o ms)    
+    .noteBook
+        @include prefix(animation, StuffFadeIn 2.5s , webkid moz o ms)
+    .photoWall
+        @include prefix(animation, StuffFadeIn 2.5s , webkid moz o ms)
+.blur
+    @include prefix(animation, BgFadeIn 0.4s , webkid moz o ms)
+    

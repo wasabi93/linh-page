@@ -1,7 +1,9 @@
+
 @mixin prefix($property, $value, $prefixes)
-    @each $prefix in $prefixes
-        -#{$prefix}-#{$property}: $value
-    #{$property}: $value
+  @each $prefix in $prefixes
+    -#{$prefix}-#{$property}: $value
+
+  #{$property}: $value
 
 @keyframes waving
     0%
@@ -12,31 +14,32 @@
         transform: rotate(-7deg)
 @-webkit-keyframes waving
     0%
-        transform: rotate(-7deg)
+    transform: rotate(-7deg)
     50%
-        transform: rotate(12deg)
+    transform: rotate(12deg)
     100%
-        transform: rotate(-7deg)
+    transform: rotate(-7deg)
 @-moz-keyframes waving
     0%
-        transform: rotate(-7deg)
+
+    transform: rotate(-7deg)
     50%
-        transform: rotate(12deg)
+    transform: rotate(12deg)
     100%
-        transform: rotate(-7deg)
+    transform: rotate(-7deg)
 
 .photoBlue
-    @include prefix(animation, waving 2.5s infinite, webkid moz o ms)
+    @include prefix(animation, (StuffFadeIn 2.5s ,waving 2.5s infinite), webkid moz o ms)
     transform-origin: center 0
 .photoDark
-    @include prefix(animation, waving 2.5s infinite, webkid moz o ms)
+    @include prefix(animation, (StuffFadeIn 2.5s ,waving 2.5s infinite), webkid moz o ms)
     transform-origin: center 0
 .photoPink
-    @include prefix(animation, waving 2.5s infinite, webkid moz o ms)
+    @include prefix(animation, (StuffFadeIn 2.5s ,waving 2.5s infinite), webkid moz o ms)
     transform-origin: center 0
 .photoRed
-    @include prefix(animation, waving 2.5s infinite, webkid moz o ms)
+    @include prefix(animation, (StuffFadeIn 2.5s ,waving 2.5s infinite), webkid moz o ms)
     transform-origin: center 0
 .photoYellow
-    @include prefix(animation, waving 2.5s infinite, webkid moz o ms)
+    @include prefix(animation, (StuffFadeIn 2.5s ,waving 2.5s infinite), webkid moz o ms)
     transform-origin: center 0

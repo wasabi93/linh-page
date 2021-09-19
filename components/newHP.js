@@ -4,7 +4,7 @@ import home from "../styles/home.module.sass";
 import Board from "./stuff/Board";
 import FullStuff from "./FullStuff";
 import Popup from "./Popup";
-import { Portrait1, Portrait2, Portrait3, Portrait4 } from "./stuff/Portrait";
+import { Portrait1, Portrait2, Portrait3, Portrait4, Portrait5 } from "./stuff/Portrait";
 
 export default function NewHP() {
   const [popupBoard, setPopupBoard] = useState(false);
