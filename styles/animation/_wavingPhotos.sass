@@ -10,29 +10,33 @@
         transform: rotate(12deg)
     100%
         transform: rotate(-7deg)
-// @-webkit-keyframes waving
-//     from
-//         transform: rotate(180deg)
-//     to
-//         transform: rotate(150deg)
-// @-moz-keyframes waving
-//     from
-//         transform: rotate(180deg)
-//     to
-//         transform: rotate(150deg)
+@-webkit-keyframes waving
+    0%
+        transform: rotate(-7deg)
+    50%
+        transform: rotate(12deg)
+    100%
+        transform: rotate(-7deg)
+@-moz-keyframes waving
+    0%
+        transform: rotate(-7deg)
+    50%
+        transform: rotate(12deg)
+    100%
+        transform: rotate(-7deg)
 
 .photoBlue
-    @include prefix(animation, waving 0.1s infinite, webkid moz o ms)
+    @include prefix(animation, waving 0.5s infinite, webkid moz o ms)
     transform-origin: center 0
 .photoDark
-    @include prefix(animation, waving 0.1s infinite, webkid moz o ms)
+    @include prefix(animation, waving 1s infinite, webkid moz o ms)
     transform-origin: center 0
 .photoPink
-    @include prefix(animation, waving 0.1s infinite, webkid moz o ms)
+    @include prefix(animation, waving 2s infinite, webkid moz o ms)
     transform-origin: center 0
 .photoRed
     @include prefix(animation, waving 0.1s infinite, webkid moz o ms)
     transform-origin: center 0
 .photoYellow
-    @include prefix(animation, waving 0.1s infinite, webkid moz o ms)
+    @include prefix(animation, waving 3s infinite, webkid moz o ms)
     transform-origin: center 0
