@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import home from "../../styles/home.module.sass";
-import laptop from '../../public/laptop/Untitled_Artwork_3.gif'
+import laptop from '../../public/laptop/laptop.gif'
 
 export default function Laptop() {
     return (

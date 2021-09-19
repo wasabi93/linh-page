@@ -4,7 +4,13 @@ import home from "../styles/home.module.sass";
 import Board from "./stuff/Board";
 import FullStuff from "./FullStuff";
 import Popup from "./Popup";
-import { Portrait1, Portrait2, Portrait3, Portrait4, Portrait5 } from "./stuff/Portrait";
+import {
+  Portrait1,
+  Portrait2,
+  Portrait3,
+  Portrait4,
+  Portrait5,
+} from "./stuff/Portrait";
 
 export default function NewHP() {
   const [popupBoard, setPopupBoard] = useState(false);
@@ -47,50 +53,57 @@ export default function NewHP() {
     setPopup2015(false);
   }
 
-  useEffect(() => {}, [popupBoard, popup2021, popup2020, popup2019, popup2018, popup2015]);
+  useEffect(() => {}, [
+    popupBoard,
+    popup2021,
+    popup2020,
+    popup2019,
+    popup2018,
+    popup2015,
+  ]);
 
   return (
     <main>
       <div className={home.homepage}>
-        <FullStuff 
-          handleOpenPopupBoard={handleOpenPopupBoard} 
+        <FullStuff
+          handleOpenPopupBoard={handleOpenPopupBoard}
           handleOpenPopup2021={handleOpenPopup2021}
           handleOpenPopup2020={handleOpenPopup2020}
           handleOpenPopup2019={handleOpenPopup2019}
           handleOpenPopup2018={handleOpenPopup2018}
           handleOpenPopup2015={handleOpenPopup2015}
         />
-        {popupBoard ? (
-          <Popup handleClosePopup={handleClosePopup}>
-            <Board />
-          </Popup>
-        ) : null}
-        {popup2021 ? (
-          <Popup handleClosePopup={handleClosePopup}>
-            <Portrait1 />
-          </Popup>
-        ) : null}
-        {popup2020 ? (
-          <Popup handleClosePopup={handleClosePopup}>
-            <Portrait2 />
-          </Popup>
-        ) : null}
-        {popup2019 ? (
-          <Popup handleClosePopup={handleClosePopup}>
-            <Portrait3 />
-          </Popup>
-        ) : null}
-        {popup2018 ? (
-          <Popup handleClosePopup={handleClosePopup}>
-            <Portrait4 />
-          </Popup>
-        ) : null}
-        {popup2015 ? (
-          <Popup handleClosePopup={handleClosePopup}>
-            <Portrait5 />
-          </Popup>
-        ) : null}
       </div>
+      {popupBoard ? (
+        <Popup handleClosePopup={handleClosePopup}>
+          <Board />
+        </Popup>
+      ) : null}
+      {popup2021 ? (
+        <Popup handleClosePopup={handleClosePopup}>
+          <Portrait1 />
+        </Popup>
+      ) : null}
+      {popup2020 ? (
+        <Popup handleClosePopup={handleClosePopup}>
+          <Portrait2 />
+        </Popup>
+      ) : null}
+      {popup2019 ? (
+        <Popup handleClosePopup={handleClosePopup}>
+          <Portrait3 />
+        </Popup>
+      ) : null}
+      {popup2018 ? (
+        <Popup handleClosePopup={handleClosePopup}>
+          <Portrait4 />
+        </Popup>
+      ) : null}
+      {popup2015 ? (
+        <Popup handleClosePopup={handleClosePopup}>
+          <Portrait5 />
+        </Popup>
+      ) : null}
     </main>
   );
 }

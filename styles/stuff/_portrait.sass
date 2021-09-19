@@ -1,3 +1,9 @@
+@mixin prefix($property, $value, $prefixes)
+    @each $prefix in $prefixes
+        -#{$prefix}-#{$property}: $value
+    #{$property}: $value
+
+
 .portraitContainer
     .portrait1
         position: relative
@@ -6,10 +12,10 @@
         background-size: auto 100%
         background-position: center
         background-repeat: no-repeat
-        transition: 0.5s
+        @include prefix(transition, 0.5s, webkit ms o moz )
         &:hover
             background-image: url('../../public/albums/04_2021_bw.jpeg')
-            transition: 0.5s
+            @include prefix(transition, 0.5s, webkit ms o moz )
     .portrait2
         position: relative
         width: 100%
@@ -18,10 +24,10 @@
         background-size: auto 100%
         background-position: center
         background-repeat: no-repeat
-        transition: 0.5s
+        @include prefix(transition, 0.5s, webkit ms o moz)
         &:hover
             background-image: url('../../public/albums/2020_bw.jpeg')  
-            transition: 0.5s
+            @include prefix(transition, 0.5s, webkit ms o moz)
     .portrait3
         position: relative
         width: 100%
@@ -30,10 +36,10 @@
         background-size: auto 100%
         background-position: center
         background-repeat: no-repeat
-        transition: 0.5s
+        @include prefix(transition, 0.5s, webkit ms o moz)
         &:hover
             background-image: url('../../public/albums/bw_2019.jpeg') 
-            transition: 0.5s 
+            @include prefix(transition, 0.5s, webkit ms o moz) 
     .portrait4
         position: relative
         width: 100%
@@ -42,10 +48,10 @@
         background-size: auto 100%
         background-position: center
         background-repeat: no-repeat
-        transition: 0.5s
+        @include prefix(transition, 0.5s, webkit ms o moz)
         &:hover
             background-image: url('../../public/albums/2018_bw.jpeg')
-            transition: 0.5s 
+            @include prefix(transition, 0.5s, webkit ms o moz) 
     .portrait5
         position: relative
         width: 100%
@@ -54,8 +60,8 @@
         background-size: auto 100%
         background-position: center
         background-repeat: no-repeat
-        transition: 0.5s
+        @include prefix(transition, 0.5s, webkit ms o moz)
         &:hover
             background-image: url('../../public/albums/2015_bw.jpeg') 
-            transition: 0.5s
+            @include prefix(transition, 0.5s, webkit ms o moz)
       
