@@ -3,6 +3,8 @@ import Clock from "./Clock";
 import Books from './Books';
 import Lamb from './Lamb'
 import Board from "./Board";
+import Photos from "./Photos";
+import NoteBook from "./NoteBooks";
 
 export default function NewHP() {
   return (
@@ -21,6 +23,8 @@ export default function NewHP() {
           <div className={home.boardContainer}>
             <Board />
           </div>
+          <Photos />
+          <NoteBook />
         </div>
       </div>
     </main>
