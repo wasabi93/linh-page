@@ -72,27 +72,58 @@
                 right: 1%
                 width: 16%
                 height: auto
-                @import 'clock'
+                @import 'stuff/clock'
             .booksContainer
                 position: absolute
                 width: 25%
                 height: 19%
                 top: 27%
                 right: 17%
-                @import 'books'
+                @import 'stuff/books'
             .lambContainer
                 position: absolute
                 left: 12%
                 bottom: 0
                 width: 41%
                 height: auto
-                @import 'lamb'
+                @import 'stuff/lamb'
             .boardContainer
                 position: absolute
-                left: 9%
-                top: 6.5%
-                width: 36%
+                left: 5.5%
+                top: 6.7%
+                width: 60%
                 height: auto
-                @import 'board'
-            @import 'photos'
-            @import 'noteBook'
+                &:hover
+                    width: 65%
+                    left: 3%
+            @import 'stuff/photos'
+            @import 'stuff/noteBook'
+            @import 'stuff/laptop'
+        .blur
+            border-radius: 20px
+            width: 90%
+            padding-top: 50%
+            background-image: url('../public/blurred_light_on.jpeg')
+            background-size: 100% auto
+            background-position: center
+            background-repeat: no-repeat
+            position: absolute
+            z-index: 3
+            .popup
+                z-index: 100
+                position: absolute
+                left: 18%
+                top: 12%
+                width: 65%
+                height: auto
+                @import 'stuff/board'
+                @import 'stuff/portrait'
+            .blocker
+                position: fixed
+                top: 0
+                left: 0
+                bottom: 0
+                right: 0
+                content: ' '
+
+

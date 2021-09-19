@@ -1,13 +1,13 @@
 import Image from "next/image";
 
-import home from "../styles/home.module.sass";
-import year2015 from "../public/board/15-17.png";
-import year2018 from "../public/board/2018.png";
-import year2019 from "../public/board/2019.png";
-import year2020 from "../public/board/2020.png";
-import year2021 from "../public/board/2021.png";
-import year2022 from "../public/board/2022.png";
-import yearOthers from "../public/board/others.png";
+import home from "../../styles/home.module.sass";
+import year2015 from "../../public/board/15-17.png";
+import year2018 from "../../public/board/2018.png";
+import year2019 from "../../public/board/2019.png";
+import year2020 from "../../public/board/2020.png";
+import year2021 from "../../public/board/2021.png";
+import year2022 from "../../public/board/2022.png";
+import yearOthers from "../../public/board/others.png";
 
 export default function Board() {
   return (

@@ -1,10 +1,10 @@
 import Image from "next/image";
 
-import home from "../styles/home.module.sass";
-import clock from '../public/clock/clock.png'
-import hour from '../public/clock/hour.png'
-import min from '../public/clock/min.png'
-import sec from '../public/clock/sec.png'
+import home from "../../styles/home.module.sass";
+import clock from '../../public/clock/clock.png'
+import hour from '../../public/clock/hour.png'
+import min from '../../public/clock/min.png'
+import sec from '../../public/clock/sec.png'
 
 export default function Clock() {
     return(

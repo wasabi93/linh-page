@@ -1,9 +1,9 @@
 import Image from "next/image";
 
-import home from "../styles/home.module.sass";
+import home from "../../styles/home.module.sass";
 
-import wallNote from '../public/note/note_on_wall.png'
-import noteBook from '../public/notebook/notebook.png'
+import wallNote from '../../public/note/note_on_wall.png'
+import noteBook from '../../public/notebook/notebook.png'
 
 export default function NoteBook() {
     return (
