@@ -13,6 +13,7 @@ export default function Lamb() {
     setSwitchLamb(!switchLamb);
   }
 
+  useEffect(() => {}, [switchLamb]);
 
   return (
     <div className={home.lamb}>

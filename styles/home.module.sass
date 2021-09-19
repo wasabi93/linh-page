@@ -56,7 +56,9 @@
         display: grid
         place-items: center
         grid-template: minmax(720px,109vh) / minmax(1280px,100vw)
+        background-color: #29b894
         .bgContainer
+            border-radius: 25px
             width: 90%
             padding-top: 50%
             background-image: url('../public/background.jpeg')
@@ -80,8 +82,15 @@
                 @import 'books'
             .lambContainer
                 position: absolute
-                left: 8%
+                left: 12%
                 bottom: 0
                 width: 41%
                 height: auto
                 @import 'lamb'
+            .boardContainer
+                position: absolute
+                left: 8%
+                top: 2%
+                width: 35%
+                height: auto
+                @import 'board'
