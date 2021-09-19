@@ -1,0 +1,38 @@
+@mixin prefix($property, $value, $prefixes)
+    @each $prefix in $prefixes
+        -#{$prefix}-#{$property}: $value
+    #{$property}: $value
+
+@keyframes waving
+    0%
+        transform: rotate(-7deg)
+    50%
+        transform: rotate(12deg)
+    100%
+        transform: rotate(-7deg)
+// @-webkit-keyframes waving
+//     from
+//         transform: rotate(180deg)
+//     to
+//         transform: rotate(150deg)
+// @-moz-keyframes waving
+//     from
+//         transform: rotate(180deg)
+//     to
+//         transform: rotate(150deg)
+
+.photoBlue
+    @include prefix(animation, waving 2s infinite, webkid moz o ms)
+    transform-origin: center 0
+.photoDark
+    @include prefix(animation, waving 2s infinite, webkid moz o ms)
+    transform-origin: center 0
+.photoPink
+    @include prefix(animation, waving 2s infinite, webkid moz o ms)
+    transform-origin: center 0
+.photoRed
+    @include prefix(animation, waving 2s infinite, webkid moz o ms)
+    transform-origin: center 0
+.photoYellow
+    @include prefix(animation, waving 2s infinite, webkid moz o ms)
+    transform-origin: center 0
