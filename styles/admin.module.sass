@@ -1,0 +1,31 @@
+.container
+    .adminContainer
+        display: grid
+        place-items: center
+        .navbarContainer
+            width: 100vw
+            height: 6vh
+            position: fixed
+            top: 0
+            left: 0
+            background-color: #ddd
+            ul
+                margin: auto 10em
+                transform: translateY(50%)
+                display: flex
+                justify-content: space-around
+                li
+                    button
+                        border: none
+        .mainContainer
+            background-color: #888585
+            min-height: 100vh
+            width: 100vw
+            display: grid
+            grid-template-columns: 1fr 20vw
+            .listData
+                @import 'admin/post'
+            .formContainer
+                @import 'admin/loginForm'
+        .none
+            display: none
