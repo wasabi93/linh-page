@@ -26,17 +26,19 @@ const PostAdmin = ({ post, setCurrentId }) => {
 
   return (
     <div className={admin.post}>
-      <h1>Album: {post.album}</h1>
-      <p>Name: {post.name}</p>
+      <p className={admin.name}>Name: {post.name}</p>
+      <div className={admin.imageBox}>
       {imageUrl.includes("/") ? (
-        <Image src={imageUrl} alt="" height='90' width='160' />
+        <Image src={imageUrl} alt="" height="90" width="160" />
       ) : (
         <div>** wrong image url **</div>
       )}
-      <p>{moment(post.createAt).fromNow()}</p>
-      <p>Position: {post.position}</p>
-      <p>Like: {post.likes}</p>
-      <p>Description: {post.description}</p>
+      </div>
+      <h1 className={admin.album}>Album: {post.album}</h1>
+      <p className={admin.date}>Created: {moment(post.createAt).fromNow()}</p>
+      <p className={admin.position}>Position: {post.position}</p>
+      <p className={admin.likes}>Like: {post.likes}</p>
+      <p className={admin.description}>Description: {post.description}</p>
       <div className={admin.postButton}>
         <button onClick={handleDelete}>Delete</button>
         <button onClick={handleEdit}>Edit</button>
