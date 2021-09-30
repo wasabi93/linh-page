@@ -8,7 +8,7 @@
             position: fixed
             top: 0
             left: 0
-            background-color: #ddd
+            background-color: #3c6fdf
             ul
                 margin: auto 10em
                 transform: translateY(50%)
@@ -18,12 +18,15 @@
                     button
                         border: none
         .mainContainer
-            background-color: #888585
+            background-color: #f1f1f3e5
             min-height: 100vh
             width: 100vw
             display: grid
             grid-template-columns: 1fr 20vw
             .listData
+                display: flex
+                flex-wrap: wrap
+                margin: 3em 1em
                 @import 'admin/post'
             .formContainer
                 @import 'admin/loginForm'

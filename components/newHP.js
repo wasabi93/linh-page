@@ -12,7 +12,7 @@ import {
   Portrait5,
 } from "./stuff/Portrait";
 
-export default function NewHP() {
+export default function NewHP({posts}) {
   const [popupBoard, setPopupBoard] = useState(false);
   const [popup2021, setPopup2021] = useState(false);
   const [popup2020, setPopup2020] = useState(false);
@@ -72,36 +72,37 @@ export default function NewHP() {
           handleOpenPopup2019={handleOpenPopup2019}
           handleOpenPopup2018={handleOpenPopup2018}
           handleOpenPopup2015={handleOpenPopup2015}
+          posts={posts}
         />
       </div>
       {popupBoard ? (
         <Popup handleClosePopup={handleClosePopup}>
-          <Board />
+          <Board posts={posts}/>
         </Popup>
       ) : null}
       {popup2021 ? (
         <Popup handleClosePopup={handleClosePopup}>
-          <Portrait1 />
+          <Portrait1 posts={posts}/>
         </Popup>
       ) : null}
       {popup2020 ? (
         <Popup handleClosePopup={handleClosePopup}>
-          <Portrait2 />
+          <Portrait2 posts={posts}/>
         </Popup>
       ) : null}
       {popup2019 ? (
         <Popup handleClosePopup={handleClosePopup}>
-          <Portrait3 />
+          <Portrait3 posts={posts}/>
         </Popup>
       ) : null}
       {popup2018 ? (
         <Popup handleClosePopup={handleClosePopup}>
-          <Portrait4 />
+          <Portrait4 posts={posts}/>
         </Popup>
       ) : null}
       {popup2015 ? (
         <Popup handleClosePopup={handleClosePopup}>
-          <Portrait5 />
+          <Portrait5 posts={posts}/>
         </Popup>
       ) : null}
     </main>

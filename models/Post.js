@@ -4,11 +4,13 @@ const PostSchema = new mongoose.Schema({
     album: String,
     name: String,
     position: Number,
-    likes: { type: [String], default:[]},
-    createdAt: {
+    link: String,
+    description: String,
+    likes: Number,
+    createAt: {
         type: Date,
-        default: new Date(),
-    },
+        default: Date.now
+    }
 })
 
-export default mongoose.model.Post || mongoose.model('Post', PostSchema)
+export default mongoose.models.Post || mongoose.model('Post', PostSchema)

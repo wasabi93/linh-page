@@ -1,63 +1,28 @@
 @mixin prefix($property, $value, $prefixes)
     @each $prefix in $prefixes
         -#{$prefix}-#{$property}: $value
-    #{$property}: $value
-
+        #{$property}: $value
 
 .portraitContainer
-    .portrait1
+    .portrait
         position: relative
         height: 60vh
-        background-image: url('../../public/albums/04_2021.jpeg')
-        background-size: auto 100%
-        background-position: center
-        background-repeat: no-repeat
-        @include prefix(transition, 0.5s, webkit ms o moz )
-        &:hover
-            background-image: url('../../public/albums/04_2021_bw.jpeg')
-            @include prefix(transition, 0.5s, webkit ms o moz )
-    .portrait2
-        position: relative
-        height: 60vh
-        background-image: url('../../public/albums/2020.jpeg')
-        background-size: auto 100%
-        background-position: center
-        background-repeat: no-repeat
-        @include prefix(transition, 0.5s, webkit ms o moz)
-        &:hover
-            background-image: url('../../public/albums/2020_bw.jpeg')  
-            @include prefix(transition, 0.5s, webkit ms o moz)
-    .portrait3
-        position: relative
-        height: 60vh
-        background-image: url('../../public/albums/2019.jpeg')
-        background-size: auto 100%
-        background-position: center
-        background-repeat: no-repeat
-        @include prefix(transition, 0.5s, webkit ms o moz)
-        &:hover
-            background-image: url('../../public/albums/bw_2019.jpeg') 
-            @include prefix(transition, 0.5s, webkit ms o moz) 
-    .portrait4
-        position: relative
-        height: 60vh
-        background-image: url('../../public/albums/2018.jpeg')
-        background-size: auto 100%
-        background-position: center
-        background-repeat: no-repeat
-        @include prefix(transition, 0.5s, webkit ms o moz)
-        &:hover
-            background-image: url('../../public/albums/2018_bw.jpeg')
-            @include prefix(transition, 0.5s, webkit ms o moz) 
-    .portrait5
-        position: relative
-        height: 60vh
-        background-image: url('../../public/albums/2015.jpeg')
-        background-size: auto 100%
-        background-position: center
-        background-repeat: no-repeat
-        @include prefix(transition, 0.5s, webkit ms o moz)
-        &:hover
-            background-image: url('../../public/albums/2015_bw.jpeg') 
-            @include prefix(transition, 0.5s, webkit ms o moz)
-      
+        display: grid
+        place-items: center
+        background-color: #ddd
+        .imageContainer
+            &:hover
+                transition: 0.5s
+                filter: grayscale(100%)
+                ~ 
+                    .description
+                        transition: 0.5s
+                        z-index: 1000
+                        color: #15bb39
+                        font-size: 1.3em
+        .description
+            position: absolute
+            top: 50%
+            left: 50%
+            transform: translate(-50%, -50%)
+            z-index: -1

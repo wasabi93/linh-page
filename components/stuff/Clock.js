@@ -12,7 +12,8 @@ export default function Clock() {
             <Image
                 src={clock}
                 alt=''
-                layout='responsive'
+                height='490'
+                width='587'
             />
             <div className={home.hourHand}>
                 <Image 
