@@ -4,21 +4,17 @@ import home from "../styles/home.module.sass";
 import Board from "./stuff/Board";
 import FullStuff from "./FullStuff";
 import Popup from "./Popup";
-import {
-  Portrait1,
-  Portrait2,
-  Portrait3,
-  Portrait4,
-  Portrait5,
-} from "./stuff/Portrait";
+import Portrait from "./stuff/Portrait";
 
 export default function NewHP({posts}) {
+  const photoX = [1,2,3,4,5]
   const [popupBoard, setPopupBoard] = useState(false);
   const [popup2021, setPopup2021] = useState(false);
   const [popup2020, setPopup2020] = useState(false);
   const [popup2019, setPopup2019] = useState(false);
   const [popup2018, setPopup2018] = useState(false);
   const [popup2015, setPopup2015] = useState(false);
+  // const 
 
   function handleOpenPopupBoard() {
     setPopupBoard(true);
@@ -53,15 +49,6 @@ export default function NewHP({posts}) {
     setPopup2015(false);
   }
 
-  useEffect(() => {}, [
-    popupBoard,
-    popup2021,
-    popup2020,
-    popup2019,
-    popup2018,
-    popup2015,
-  ]);
-
   return (
     <main>
       <div className={home.homepage}>
@@ -82,27 +69,27 @@ export default function NewHP({posts}) {
       ) : null}
       {popup2021 ? (
         <Popup handleClosePopup={handleClosePopup}>
-          <Portrait1 posts={posts}/>
+          <Portrait x={photoX[0]} posts={posts}/>
         </Popup>
       ) : null}
       {popup2020 ? (
         <Popup handleClosePopup={handleClosePopup}>
-          <Portrait2 posts={posts}/>
+          <Portrait x={photoX[1]} posts={posts}/>
         </Popup>
       ) : null}
       {popup2019 ? (
         <Popup handleClosePopup={handleClosePopup}>
-          <Portrait3 posts={posts}/>
+          <Portrait x={photoX[2]} posts={posts}/>
         </Popup>
       ) : null}
       {popup2018 ? (
         <Popup handleClosePopup={handleClosePopup}>
-          <Portrait4 posts={posts}/>
-        </Popup>
+          <Portrait x={photoX[3]} posts={posts}/>
+        </Popup> 
       ) : null}
       {popup2015 ? (
         <Popup handleClosePopup={handleClosePopup}>
-          <Portrait5 posts={posts}/>
+          <Portrait x={photoX[4]} posts={posts}/>
         </Popup>
       ) : null}
     </main>
