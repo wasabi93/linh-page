@@ -3,8 +3,8 @@ import Image from "next/image";
 
 import home from "../../styles/home.module.sass";
 
-import turnOn from "../../public/lamp/lamp_on.png";
-import turnOff from "../../public/lamp/lamp_off.png";
+import turnOn from "../../public/stuff/lamp/lamp_on.png";
+import turnOff from "../../public/stuff/lamp/lamp_off.png";
 
 export default function Lamb() {
   const [switchLamb, setSwitchLamb] = useState(true);

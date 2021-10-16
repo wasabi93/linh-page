@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import home from "../../styles/home.module.sass";
-import boardHP from "../../public/board/board_for_homepage.png";
+import boardHP from "../../public/stuff/board/board_for_homepage.png";
 
 export default function BoardHP(props) {
     return(

@@ -15,6 +15,12 @@ const HomePage = ({posts}) => {
         <meta property="og:image:type" content="image/jpeg"></meta>
         <meta property="og:image:width" content="200"></meta>
         <meta property="og:image:height" content="200"></meta>
+        <link 
+          rel="preload"
+          href="../public/fonts/Panton/iCielPanton-Light.otf"
+          as="font"
+          crossOrigin=""
+        />
       </Head>
       <NewHP posts={posts}/>
     </div>

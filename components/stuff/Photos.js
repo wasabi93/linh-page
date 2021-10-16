@@ -2,12 +2,12 @@ import Image from "next/image";
 
 import home from "../../styles/home.module.sass";
 
-import photoBlue from "../../public/photos/blue_photo.png";
-import photoDark from "../../public/photos/dark_blue_photo.png";
-import photoWall from "../../public/photos/photo_on_wall.png";
-import photoPink from "../../public/photos/pink_photo.png";
-import photoRed from "../../public/photos/red_photo.png";
-import photoYellow from "../../public/photos/yellow_photo.png";
+import photoBlue from "../../public/stuff/photos/blue_photo.png";
+import photoDark from "../../public/stuff/photos/dark_blue_photo.png";
+import photoWall from "../../public/stuff/photos/photo_on_wall.png";
+import photoPink from "../../public/stuff/photos/pink_photo.png";
+import photoRed from "../../public/stuff/photos/red_photo.png";
+import photoYellow from "../../public/stuff/photos/yellow_photo.png";
 
 export default function Photos(props) {
   const {handleOpenPopup2020,handleOpenPopup2021,handleOpenPopup2019,handleOpenPopup2018,handleOpenPopup2015} = props

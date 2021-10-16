@@ -6,6 +6,7 @@ export default function Popup(props) {
       <div className={home.blur}>
         <div className={home.popup}>{props.children}</div>
         <div className={home.blocker} onClick={props.handleClosePopup}></div>
+        
       </div>
     </div>
   );
