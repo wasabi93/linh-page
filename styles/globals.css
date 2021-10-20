@@ -320,7 +320,7 @@ input[type="button"] {
 
 @font-face {
   font-family: "Panton";
-  src: url("../public//fonts/Panton/iCielPanton-Light.otf");
+  src: url("../public/fonts/Panton/iCielPanton-Light.otf");
   font-style: normal;
   font-weight: 400;
   font-display: swap;

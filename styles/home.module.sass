@@ -1,57 +1,4 @@
-// @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Urbanist:wght@500&display=swap');
-
-// $color--a: #DC6C5C
-// $hover--a: #6280C1
-// $main--a: #f6f7f7
-
-// $font--a: Montserrat
-// $font--b: Urbanist
-
-// .container
-//     .homeContainer
-//         background-color: $main--a
-//         display: grid
-//         grid-template-columns: minmax(150px, 25%) 1fr
-//         min-height: 100vh
-//         @import 'animation/sideBar'
-//         @import 'animation/main'
-//         .sideBarContainer
-//             background: url('../public/sideBar.svg')
-//             display: grid
-//             place-items: center
-//             .logo
-//                 min-width: 20vw 
-//             .navLink
-//                 font-family: $font--a
-//                 font-size: 1.5em
-//                 .navIcon
-//                     display: flex
-//                     li
-//                         padding: 3px
-//                 ul
-//                     li
-//                         padding: 5px
-//                 a
-//                     color: $color--a
-//                     &:visited
-//                         text-decoration: none  
-//                     &:hover
-//                         color: $hover--a          
-//         .mainContainer
-//             display: grid
-//             place-items: center
-//             padding: 2em
-//             margin: 5em auto   
-//             @import 'clock'
-//             .mainGif
-//                 width: 40vw
-//             .introduce
-//                 padding: 0 10vw
-//                 color: $color--a
-//                 font-size: 1.5em
-//                 font-family: $font--b
-
-    
+   
 .container
     .homepage
         display: grid
@@ -89,13 +36,11 @@
                 @import 'stuff/lamb'
             .boardContainer
                 position: absolute
-                left: 5.5%
-                top: 6.7%
-                width: 60%
+                left: 9%
+                top: 6%
+                width: 36%
                 height: auto
-                &:hover
-                    width: 62%
-                    left: 4.5%
+                @import 'stuff/board'
             @import 'stuff/photos'
             @import 'stuff/noteBook'
             @import 'stuff/laptop'
@@ -117,12 +62,39 @@
             .popup
                 z-index: 100
                 position: fixed
-                left: 36%
-                top: 15%
-                width: 28vw
+                left: 29%
+                top: 5%
+                width: 42vw
                 height: auto
-                @import 'stuff/board'
-                @import 'stuff/portrait'
+                @import 'stuff/children'
+            .popupLaptop
+                z-index: 100
+                position: fixed
+                left: 20%
+                top: 5%
+                width: 60vw
+                height: 90vh
+                @import 'stuff/popupLaptop'
+            .leftArrow
+                position: fixed
+                top: 44%
+                left: 20%
+                width: 3%
+                height: auto
+                &:hover
+                    top: 43%
+                    left: 19%
+                    width: 4%
+            .rightArrow
+                position: fixed
+                top: 44%
+                right: 20%
+                width: 3%
+                height: auto
+                &:hover
+                    top: 43%
+                    right: 19%
+                    width: 4%
             .blocker
                 position: fixed
                 top: 0

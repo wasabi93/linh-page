@@ -8,25 +8,32 @@ import redOne from "../../public/stuff/books/book_red.png";
 import pinkOne from "../../public/stuff/books/light_pink_book.png";
 import yellowTwo from "../../public/stuff/books/book_yellow_right.png";
 
-export default function Books() {
+export default function Books(props) {
+  const {
+    handleOpenPopupBlue,
+    handleOpenPopupYellow,
+    handleOpenPopupPink,
+    handleOpenPopupRed,
+    handleOpenPopupYellowRight
+  } = props
   return (
     <div className={home.books}>
       <div className={home.leftBooks}>
-        <div className={home.blueOne}>
+        <div className={home.blueOne} onClick={handleOpenPopupBlue}>
           <Image src={blueOne} alt="" layout="responsive" />
         </div>
-        <div className={home.yellowOne}>
+        <div className={home.yellowOne} onClick={handleOpenPopupYellow}>
           <Image src={yellowOne} alt="" layout="responsive" />
         </div>
       </div>
-      <div className={home.rightBooks}>
-        <div className={home.redOne}>
+      <div className={home.rightBooks} >
+        <div className={home.redOne} onClick={handleOpenPopupRed}>
           <Image src={redOne} alt="" layout="responsive" />
         </div>
-        <div className={home.pinkOne}>
+        <div className={home.pinkOne} onClick={handleOpenPopupPink}>
           <Image src={pinkOne} alt="" layout="responsive" />
         </div>
-        <div className={home.yellowTwo}>
+        <div className={home.yellowTwo} onClick={handleOpenPopupYellowRight}>
           <Image src={yellowTwo} alt="" layout="responsive" />
         </div>
       </div>

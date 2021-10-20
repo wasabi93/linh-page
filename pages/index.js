@@ -3,7 +3,7 @@ import Head from 'next/head'
 import dbConnect from '../lib/dbConnect'
 import Post from '../models/Post.js'
 
-import NewHP from '../components/newHP'
+import Home from '../components/Home'
 import home from '../styles/home.module.sass'
 
 const HomePage = ({posts}) => {
@@ -17,12 +17,12 @@ const HomePage = ({posts}) => {
         <meta property="og:image:height" content="200"></meta>
         <link 
           rel="preload"
-          href="../public/fonts/Panton/iCielPanton-Light.otf"
+          href="fonts/Panton/iCielPanton-Light.otf"
           as="font"
           crossOrigin=""
         />
       </Head>
-      <NewHP posts={posts}/>
+      <Home posts={posts}/>
     </div>
   )
 }

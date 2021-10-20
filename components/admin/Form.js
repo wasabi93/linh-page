@@ -111,6 +111,7 @@ export default function Form({ posts, currentId, setCurrentId }) {
         <option value="year2019">Year2019</option>
         <option value="year2018">Year2018</option>
         <option value="year2015-17">Year2015-17</option>
+        <option value="others">Others</option>
         <option value="photo1">Photo1</option>
         <option value="photo2">Photo2</option>
         <option value="photo3">Photo3</option>
@@ -123,7 +124,7 @@ export default function Form({ posts, currentId, setCurrentId }) {
         <option value="bookPink">Book pink</option>
         <option value="bookYellowRight">Book yellow right</option>
         <option value="laptop">Laptop</option>
-        <option value="noteWall">Note on wall</option>
+        <option value="quoteNote">Note on wall</option>
         <option value="notebook">Notebook</option>
       </select>
       <input
