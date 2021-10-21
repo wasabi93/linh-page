@@ -3,9 +3,11 @@ import React, { useState, useEffect } from "react";
 import home from "../styles/home.module.sass";
 import FullStuff from "./FullStuff";
 import Popup from "./popup/Popup";
-import PopupLaptop from './popup/PopupLaptop'
+import PopupLaptop from './popup/PopupLaptop';
+import PopupList from "./popup/PopupList";
+import PopupPortrait from "./popup/PopupPortrait";
 
-export default function NewHP({posts}) {
+export default function Home({posts}) {
 
   const [popup2022, setPopup2022] = useState(false);
   const [popup2021, setPopup2021] = useState(false);
@@ -191,22 +193,22 @@ export default function NewHP({posts}) {
         />
       </div>
       {popupPhoto1 ? (
-        <Popup posts={photo1} handleClosePopup={handleClosePopup} />
+        <PopupPortrait posts={photo1} handleClosePopup={handleClosePopup} />
       ) : null}
       {popupPhoto2 ? (
-        <Popup posts={photo2} handleClosePopup={handleClosePopup} />
+        <PopupPortrait posts={photo2} handleClosePopup={handleClosePopup} />
       ) : null}
       {popupPhoto3 ? (
-        <Popup posts={photo3} handleClosePopup={handleClosePopup} />
+        <PopupPortrait posts={photo3} handleClosePopup={handleClosePopup} />
       ) : null}
       {popupPhoto4 ? (
-        <Popup posts={photo4} handleClosePopup={handleClosePopup} />
+        <PopupPortrait posts={photo4} handleClosePopup={handleClosePopup} />
       ) : null}
       {popupPhoto5 ? (
-        <Popup posts={photo5} handleClosePopup={handleClosePopup} />
+        <PopupPortrait posts={photo5} handleClosePopup={handleClosePopup} />
       ) : null}
       {popupOnWall ? (
-        <Popup posts={photoOnWall} handleClosePopup={handleClosePopup} />
+        <PopupPortrait posts={photoOnWall} handleClosePopup={handleClosePopup} />
       ) : null}
       {popupYellow ? (
         <Popup posts={yellowBook} handleClosePopup={handleClosePopup} />
@@ -231,6 +233,27 @@ export default function NewHP({posts}) {
       ) : null}
       {popupLaptop ? (
         <PopupLaptop post={laptop} handleClosePopup={handleClosePopup} />
+      ) : null}
+      {popup2015 ? (
+        <PopupList posts={year2015} handleClosePopup={handleClosePopup} />
+      ) : null}
+      {popup2018 ? (
+        <PopupList posts={year2018} handleClosePopup={handleClosePopup} />
+      ) : null}
+      {popup2019 ? (
+        <PopupList posts={year2019} handleClosePopup={handleClosePopup} />
+      ) : null}
+      {popup2020 ? (
+        <PopupList posts={year2020} handleClosePopup={handleClosePopup} />
+      ) : null}
+      {popup2021 ? (
+        <PopupList posts={year2021} handleClosePopup={handleClosePopup} />
+      ) : null}
+      {popup2022 ? (
+        <PopupList posts={year2022} handleClosePopup={handleClosePopup} />
+      ) : null}
+      {popupOther ? (
+        <PopupList posts={others} handleClosePopup={handleClosePopup} />
       ) : null}
     </main>
   );

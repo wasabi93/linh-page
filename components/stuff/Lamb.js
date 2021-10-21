@@ -16,16 +16,16 @@ export default function Lamb() {
   useEffect(() => {}, [switchLamb]);
 
   return (
+    <>
     <div className={home.lamb}>
       <div className={home.lambSwitch} onClick={handleSwitchLamb}></div>
-      <div>
-          <div className={switchLamb ? home.turnOn : home.none}>
-            <Image src={turnOn} alt="" layout="responsive" />
-          </div>
-          <div className={switchLamb ? home.none : home.turnOff}>
-            <Image src={turnOff} alt="" layout="responsive" />
-          </div>
+      <div className={switchLamb ? home.turnOn : home.none}>
+        <Image src={turnOn} alt="" layout="responsive" />
+      </div>
+      <div className={switchLamb ? home.none : home.turnOff}>
+        <Image src={turnOff} alt="" layout="responsive" />
       </div>
     </div>
+    </>
   );
 }

@@ -29,10 +29,10 @@
                 @import 'stuff/books'
             .lambContainer
                 position: absolute
-                left: 12%
+                left: 9%
                 bottom: 0
                 width: 41%
-                height: auto
+                height: 50%
                 @import 'stuff/lamb'
             .boardContainer
                 position: absolute
@@ -59,6 +59,7 @@
             padding-top: 50%
             position: absolute
             z-index: 10
+            @import 'popup/popupLists'
             .popup
                 z-index: 100
                 position: fixed
@@ -66,7 +67,8 @@
                 top: 5%
                 width: 42vw
                 height: auto
-                @import 'stuff/children'
+                @import 'popup/popup'
+                @import 'popup/popupPortrait'
             .popupLaptop
                 z-index: 100
                 position: fixed
@@ -74,7 +76,7 @@
                 top: 5%
                 width: 60vw
                 height: 90vh
-                @import 'stuff/popupLaptop'
+                @import 'popup/popupLaptop'
             .leftArrow
                 position: fixed
                 top: 44%
