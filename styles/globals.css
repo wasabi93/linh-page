@@ -325,3 +325,7 @@ input[type="button"] {
   font-weight: 400;
   font-display: swap;
 }
+
+html:focus-within {
+  scroll-behavior: smooth;
+}

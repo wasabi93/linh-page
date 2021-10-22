@@ -35,10 +35,10 @@ const PostAdmin = ({ post, setCurrentId }) => {
       )}
       </div>
       <h1 className={admin.album}>Album: {post.album}</h1>
-      <p className={admin.date}>Created: {moment(post.createAt).fromNow()}</p>
-      <p className={admin.position}>Position: {post.position}</p>
-      <p className={admin.likes}>Like: {post.likes}</p>
-      <p className={admin.description}>Description: {post.description}</p>
+      <div className={admin.date}>Created: {moment(post.createAt).fromNow()}</div>
+      <div className={admin.position}>Position: {post.position}</div>
+      <div className={admin.likes}>Like: {post.likes}</div>
+      <div className={admin.description}>Description: {post.description}</div>
       <div className={admin.postButton}>
         <button onClick={handleDelete}>Delete</button>
         <button onClick={handleEdit}>Edit</button>

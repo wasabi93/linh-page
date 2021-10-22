@@ -16,19 +16,27 @@
                 display: flex
                 justify-content: space-around
                 li
-                    button
-                        border: none
+                    a
+                        color: #ddd
+                        text-decoration: none
+                        &:hover
+                            color: #25a163
         .mainContainer
             background-color: #f1f1f3e5
+            padding-top: 10vh
             min-height: 100vh
             width: 100vw
             display: grid
             grid-template-columns: 1fr 20vw
-            .listData
-                display: flex
-                flex-wrap: wrap
-                margin: 3em 1em
-                @import 'admin/post'
+            .sectionContainer
+                display: grid
+                .section
+                          
+                    .listData
+                        display: flex
+                        flex-wrap: wrap
+                        margin: 3em 1em
+                        @import 'admin/post'
             .formContainer
                 @import 'admin/loginForm'
         .none
