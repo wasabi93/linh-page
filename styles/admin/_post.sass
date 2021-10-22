@@ -1,9 +1,13 @@
 .post
     border: 1px solid black
-    height: 45vh
+    height: 48vh
     width: 15vw
     margin: 1em
     padding: 1em
+    overflow: scroll
+    .date
+        height: 38px
+        overflow: scroll
     .name
         text-align: center
     .imageBox
@@ -15,5 +19,41 @@
         height: 25px
     .postButton
         display: flex
-        justify-content: center
+        justify-content: space-around
         padding-top: 0.5em
+    .blurContainer
+        position: fixed
+        top: 0
+        left: 0
+        z-index: 9
+        display: grid
+        place-items: center
+        grid-template: minmax(720px,109vh)  / minmax(1280px,100vw)
+        background-color: rgba(44, 43, 43, 0.877)
+        @import '../animation/fadeIn'
+        .blur
+            border-radius: 20px
+            width: 90%
+            padding-top: 50%
+            position: absolute
+            z-index: 10
+            .popup
+                z-index: 100
+                position: fixed
+                left: 40%
+                top: 40%
+                width: 20vw
+                height: 12vh
+                display: grid
+                place-items: center
+                background-color: #ddd
+                .buttonPopup
+                    button
+                        margin: 5px
+            .blocker
+                position: fixed
+                top: 0
+                left: 0
+                bottom: 0
+                right: 0
+                content: ' '
