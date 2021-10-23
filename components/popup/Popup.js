@@ -1,12 +1,13 @@
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import {AiFillCloseCircle} from "react-icons/ai"
 
 import home from "../../styles/home.module.sass";
 import left from "../../public/stuff/arrow/left.png";
 import right from "../../public/stuff/arrow/right.png";
 
 export default function Popup(props) {
-  const { posts, handleClosePopup } = props;
+  const { posts, popupPost, handleClosePopup, handleClosePopupPost} = props;
   const [current, setCurrent] = useState(0);
 
   posts.sort((a, b) => a.position - b.position);
@@ -21,11 +22,12 @@ export default function Popup(props) {
 
   return (
     <div className={home.blurContainer}>
+      {popupPost ? <div className={home.closeButton}><AiFillCloseCircle color='white' size='2em' onClick={handleClosePopupPost}/></div> : null}
       <div className={home.blur}>
         <div className={home.popup}>
-          <div className={home.portraitContainer}>
+          <div className={home.postContainer}>
             {posts.length ? (
-              <div className={home.portrait}>
+              <div className={home.post}>
                 <div className={home.imageContainer}>
                   {posts[current].link ? (
                     <Image
@@ -35,13 +37,6 @@ export default function Popup(props) {
                       objectFit="contain"
                     />
                   ) : null}
-                </div>
-                <div className={home.description}>
-                  <p>
-                    {posts[current].length !== 0
-                      ? posts[current].description
-                      : null}
-                  </p>
                 </div>
               </div>
             ) : null}

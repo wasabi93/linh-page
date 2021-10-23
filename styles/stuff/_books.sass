@@ -11,19 +11,76 @@
             bottom: 33%
             left: -5%
             width: 98%
+            .tooltipText
+                visibility: hidden
+                height: auto
+                text-overflow: ellipsis
+                overflow-wrap: break-word
+                width: 120px
+                background-color: #ddd
+                color: black
+                text-align: center
+                border-radius: 6px
+                padding: 5px 0
+                position: absolute
+                z-index: 1
+                bottom: 110%
+                left: 50%
+                margin-left: -60px
+                opacity: 0.8
+                &:after
+                    content: ""
+                    position: absolute
+                    opacity: 0.8
+                    top: 100%
+                    left: 50%
+                    margin-left: -5px
+                    border-width: 5px
+                    border-style: solid
+                    border-color: #ddd transparent transparent transparent
             &:hover
                 left: -15%
                 width: 120%
                 z-index: 10
+                .tooltipText
+                    visibility: visible
         .yellowOne
             position: absolute
             bottom: 4%
             width: 88%
             left: 6%
+            .tooltipText
+                visibility: hidden
+                height: auto
+                text-overflow: ellipsis
+                overflow-wrap: break-word
+                width: 120px
+                background-color: #ddd
+                color: black
+                text-align: center
+                border-radius: 6px
+                padding: 5px 0
+                position: absolute
+                z-index: 1
+                top: 105%
+                left: 50%
+                margin-left: -60px
+                opacity: 0.8
+                &:after
+                    content: ""
+                    position: absolute
+                    bottom: 100%
+                    left: 50%
+                    margin-left: -5px
+                    border-width: 5px
+                    border-style: solid
+                    border-color: transparent transparent #ddd transparent
             &:hover
                 left: 0%
                 width: 105%
                 z-index: 10
+                .tooltipText
+                    visibility: visible
     .rightBooks
         position: relative
         .redOne
@@ -32,22 +89,106 @@
             height: auto
             left: 1%
             width: 29%
+            .tooltipText
+                visibility: hidden
+                width: 120px
+                height: auto
+                text-overflow: ellipsis
+                overflow-wrap: break-word
+                background-color: #ddd
+                color: black
+                text-align: center
+                border-radius: 6px
+                padding: 5px 0
+                position: absolute
+                z-index: 1
+                top: 105%
+                left: 50%
+                margin-left: -60px
+                opacity: 0.8
+                &:after
+                    content: ""
+                    position: absolute
+                    bottom: 100%
+                    left: 50%
+                    margin-left: -5px
+                    border-width: 5px
+                    border-style: solid
+                    border-color: transparent transparent #ddd transparent
             &:hover
                 width: 35%
                 z-index: 10
+                .tooltipText
+                    visibility: visible
         .pinkOne
             position: absolute
             bottom: 12%
             right: 21%
             width: 54%
+            .tooltipText
+                visibility: hidden
+                height: auto
+                text-overflow: ellipsis
+                overflow-wrap: break-word
+                width: 120px
+                background-color: #ddd
+                color: black
+                text-align: center
+                border-radius: 6px
+                padding: 5px 0
+                position: absolute
+                z-index: 1
+                top: 105%
+                left: 60%
+                margin-left: -60px
+                opacity: 0.8
+                &:after
+                    content: ""
+                    position: absolute
+                    bottom: 100%
+                    left: 50%
+                    margin-left: -5px
+                    border-width: 5px
+                    border-style: solid
+                    border-color: transparent transparent #ddd transparent
             &:hover
                 width: 62%
                 z-index: 10
+                .tooltipText
+                    visibility: visible
         .yellowTwo
             position: absolute
             right: 0%
             bottom: 11.5%
             width: 52%
+            .tooltipText
+                visibility: hidden
+                height: auto
+                text-overflow: ellipsis
+                overflow-wrap: break-word
+                width: 120px
+                background-color: #ddd
+                color: black
+                text-align: center
+                border-radius: 6px
+                padding: 5px 0
+                position: absolute
+                z-index: 1
+                top: 105%
+                left: 75%
+                margin-left: -60px
+                opacity: 0.8
+                &:after
+                    content: ""
+                    position: absolute
+                    bottom: 100%
+                    left: 50%
+                    margin-left: -5px
+                    border-width: 5px
+                    border-style: solid
+                    border-color: transparent transparent #ddd transparent
             &:hover
                 width: 60%
                 z-index: 10
+                .tooltipText
+                    visibility: visible

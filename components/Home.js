@@ -168,6 +168,11 @@ export default function Home({posts}) {
     <main>
       <div className={home.homepage}>
         <FullStuff
+          yellowBook={yellowBook}
+          blueBook={blueBook}
+          redBook={redBook}
+          pinkBook={pinkBook}
+          yellowRight={yellowRight}
           handleOpenPopupPhoto1={handleOpenPopupPhoto1}
           handleOpenPopupPhoto2={handleOpenPopupPhoto2}
           handleOpenPopupPhoto3={handleOpenPopupPhoto3}

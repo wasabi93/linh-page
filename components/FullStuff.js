@@ -9,6 +9,11 @@ import Laptop from "./stuff/Laptop";
 
 export default function FullStuff(props) {
   const {
+    yellowBook,
+    blueBook,
+    redBook,
+    pinkBook,
+    yellowRight,
     handleOpenPopup2020,
     handleOpenPopup2021,
     handleOpenPopup2022,
@@ -39,6 +44,11 @@ export default function FullStuff(props) {
         </div>
         <div className={home.booksContainer}>
           <Books
+            yellowBook={yellowBook}
+            blueBook={blueBook}
+            redBook={redBook}
+            pinkBook={pinkBook}
+            yellowRight={yellowRight}
             handleOpenPopupBlue={handleOpenPopupBlue}
             handleOpenPopupYellow={handleOpenPopupYellow}
             handleOpenPopupPink={handleOpenPopupPink}
@@ -50,7 +60,7 @@ export default function FullStuff(props) {
           <Lamb />
         </div>
         <div className={home.boardContainer}>
-          <Board 
+          <Board
             handleOpenPopup2022={handleOpenPopup2022}
             handleOpenPopup2021={handleOpenPopup2021}
             handleOpenPopup2020={handleOpenPopup2020}
