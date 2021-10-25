@@ -1,9 +1,9 @@
-   
+
 .container
     .homepage
         display: grid
         place-items: center
-        grid-template: minmax(720px,109vh)  / minmax(1280px,100vw)
+        grid-template: minmax(720px,109vh) / minmax(1280px,100vw)
         @import 'animation/fadeIn'
         .bgContainer
             width: 90%
@@ -50,7 +50,7 @@
         left: 0
         display: grid
         place-items: center
-        grid-template: minmax(720px,109vh)  / minmax(1280px,100vw)
+        grid-template: minmax(720px,109vh) / minmax(1280px,100vw)
         background-color: rgba(44, 43, 43, 0.877)
         @import 'animation/fadeIn'
         .closeButton
@@ -67,11 +67,30 @@
             position: absolute
             z-index: 10
             @import 'popup/popupLists'
+            .dotBar
+                display: flex
+                position: fixed
+                width: 700px
+                left: 50%
+                margin-left: -350px
+                bottom: 2%
+                justify-content: center
+                align-items: center
+                z-index: 101
+                .blankCircle
+                    width: 13px
+                    height: 13px
+                    border: 1px solid white
+                    border-radius: 15px
+                    margin: 2px
+                    margin-bottom: 6px
+                    &:hover
+                        background-color: white
             .popup
                 z-index: 100
                 position: fixed
                 left: 29%
-                top: 5%
+                top: 3%
                 width: 42vw
                 height: auto
                 @import 'popup/popup'
@@ -111,5 +130,3 @@
                 bottom: 0
                 right: 0
                 content: ' '
-
-

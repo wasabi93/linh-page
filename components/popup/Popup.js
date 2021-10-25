@@ -1,16 +1,22 @@
 import Image from "next/image";
 import { useState } from "react";
-import {AiFillCloseCircle} from "react-icons/ai"
+import { AiFillCloseCircle } from "react-icons/ai";
+import { MdOutlineIncompleteCircle } from "react-icons/md";
 
 import home from "../../styles/home.module.sass";
 import left from "../../public/stuff/arrow/left.png";
 import right from "../../public/stuff/arrow/right.png";
 
 export default function Popup(props) {
-  const { posts, popupPost, handleClosePopup, handleClosePopupPost} = props;
-  const [current, setCurrent] = useState(0);
+  const { posts, popupPost, handleClosePopup, handleClosePopupPost, position } =
+    props;
+  const [current, setCurrent] = position ? useState(position) : useState(0);
 
   posts.sort((a, b) => a.position - b.position);
+
+  function handleCurrent(e) {
+    setCurrent(parseInt(e.currentTarget.getAttribute('value'))); 
+  }
 
   function handleCurrentUp() {
     setCurrent(current + 1);
@@ -22,8 +28,34 @@ export default function Popup(props) {
 
   return (
     <div className={home.blurContainer}>
-      {popupPost ? <div className={home.closeButton}><AiFillCloseCircle color='white' size='2em' onClick={handleClosePopupPost}/></div> : null}
+      {popupPost ? (
+        <div className={home.closeButton}>
+          <AiFillCloseCircle
+            color="white"
+            size="2em"
+            onClick={handleClosePopupPost}
+          />
+        </div>
+      ) : null}
       <div className={home.blur}>
+        <div className={home.dotBar}>
+          {posts.length >= 2
+            ? posts.map((post,x) =>
+                x === current ? (
+                  <div className={home.dotted} key={post._id} >
+                    <MdOutlineIncompleteCircle color="white" />
+                  </div>
+                ) : (
+                  <div
+                    className={home.blankCircle}
+                    onClick={handleCurrent}
+                    key={post._id}
+                    value={x}
+                  ></div>
+                )
+              )
+            : null}
+        </div>
         <div className={home.popup}>
           <div className={home.postContainer}>
             {posts.length ? (

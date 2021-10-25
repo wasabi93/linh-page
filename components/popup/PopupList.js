@@ -8,22 +8,17 @@ export default function PopupList(props) {
   const { posts, handleClosePopup } = props;
 
   const [popupPost, SetPopupPost] = useState(false);
-  const [position, setPosition] = useState(0)
-
-  // const handlePosition = (e) => {
-  //   setPosition(e.target.value)
-  //   console.log(position)
-  // }
+  const [position, setPosition] = useState()
 
   const handleOpenPopupPost = (e) => {
     SetPopupPost(true);
-    console.log(e.target)
+    setPosition(parseInt(e.currentTarget.getAttribute('value')))
   };
+
 
   const handleClosePopupPost = () => {
     SetPopupPost(false);
   };
-
 
   posts.sort((a, b) => a.position - b.position);
 
@@ -43,6 +38,7 @@ export default function PopupList(props) {
                             <div
                               className={home.post}
                               key={post._id}
+                              value={post.position - 6}
                               onClick={handleOpenPopupPost}
                             >
                               <Image
@@ -66,6 +62,7 @@ export default function PopupList(props) {
                             <div
                               className={home.post}
                               key={post._id}
+                              value={post.position - 6}
                               onClick={handleOpenPopupPost}
                             >
                               <Image
@@ -89,6 +86,7 @@ export default function PopupList(props) {
                             <div
                               className={home.post}
                               key={post._id}
+                              value={post.position - 6}
                               onClick={handleOpenPopupPost}
                             >
                               <Image
@@ -109,7 +107,7 @@ export default function PopupList(props) {
         </div>
       ) : null}
       {popupPost ? (
-        <Popup posts={posts} popupPost={popupPost} handleClosePopupPost={handleClosePopupPost} />
+        <Popup posts={posts} popupPost={popupPost} position={position} handleClosePopupPost={handleClosePopupPost} />
       ) : null}
     </>
   );
