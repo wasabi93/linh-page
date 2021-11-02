@@ -1,11 +1,15 @@
 import { useState } from "react";
-
+import { logout } from "../lib/auth";
 import admin from "../styles/admin.module.sass";
 import PostAdmin from "./admin/PostAdmin";
 import Form from "./admin/Form";
 
 const Admin = ({ posts }) => {
   const [currentId, setCurrentId] = useState(0);
+  const handleLogout = (e) => {
+    e.preventDefault();
+    logout()
+  }
 
   return (
     <div className={admin.adminContainer}>
@@ -27,6 +31,7 @@ const Admin = ({ posts }) => {
             <li>
               <a href="#laptop">Laptop</a>
             </li>
+            <li><button onClick={handleLogout}>Logout</button></li>
           </ul>
         </div>
       </header>
