@@ -1,18 +1,17 @@
 import React, { useState } from "react";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { login } from "../../lib/auth";
 
 import form from "../../styles/form.module.sass";
 
 export default function LoginForm() {
-  const [user, setUser] = useState({ user: "", password: "" });
-  const router = useRouter();
   const contentType = "application/json";
+  const [user, setUser] = useState({ user: "", password: ""});
+  const router = useRouter();
 
-  const getUser = async (user) => {
+  const postUser = async (user) => {
     try {
-      const res = await fetch("/api/login", {
+      const res = await fetch("/api/register", {
         method: "POST",
         headers: {
           Accept: contentType,
@@ -20,12 +19,14 @@ export default function LoginForm() {
         },
         body: JSON.stringify(user),
       });
-
+    
       // Throw error with status code in case Fetch API req failed
       if (res.status === 200) {
         const { token } = await res.json();
-        login({ token }, true);
+        login({ token }, false);
+        router.push('/login')
       }
+
     } catch (error) {
       console.log(error);
     }
@@ -33,7 +34,7 @@ export default function LoginForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    getUser(user);
+    postUser(user);
   };
 
   return (
@@ -49,25 +50,20 @@ export default function LoginForm() {
             className={form.username}
             name="username"
             type="text"
-            placeholder="username..."
+            placeholder="Username..."
             onChange={(e) => setUser({ ...user, username: e.target.value })}
           />
           <input
             className={form.password}
             name="password"
             type="password"
-            placeholder="password"
+            placeholder="Password"
             onChange={(e) => setUser({ ...user, password: e.target.value })}
           />
         </div>
         <div className={form.bottom}>
-          <div className={form.register}>
-            <Link href="/register">
-              <a>Register</a>
-            </Link>
-          </div>
           <div className={form.button}>
-            <button>Login</button>
+            <button>Register</button>
           </div>
         </div>
       </form>

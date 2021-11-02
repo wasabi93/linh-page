@@ -5,8 +5,8 @@ import Post from '../models/Post.js'
 
 import Home from '../components/Home'
 import home from '../styles/home.module.sass'
-
 const HomePage = ({posts}) => {
+  
   return (
     <div className={home.container}>
       <Head>

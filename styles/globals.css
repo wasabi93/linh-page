@@ -326,6 +326,6 @@ input[type="button"] {
   font-display: swap;
 }
 
-html:focus-within {
+html {
   scroll-behavior: smooth;
 }
