@@ -16,9 +16,8 @@ const adminPage = () => {
 
   useEffect(() => {
     getPosts().then((data) => setPosts(data)).catch(e => console.log(e))
-  },[])
+  },[posts])
 
-  console.log(posts)
 
   return (
     <div className={admin.container}>

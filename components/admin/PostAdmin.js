@@ -24,6 +24,7 @@ const PostAdmin = ({ post, setCurrentId }) => {
     } catch (error) {
       console.log(error);
     }
+    setPopupDelete(!popupDelete);
   };
 
   const handleEdit = () => {
