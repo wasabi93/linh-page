@@ -61,11 +61,11 @@ export default function LoginForm() {
           />
         </div>
         <div className={form.bottom}>
-          <div className={form.register}>
+          {/* <div className={form.register}>
             <Link href="/register">
               <a>Register</a>
             </Link>
-          </div>
+          </div> */}
           <div className={form.button}>
             <button>Login</button>
           </div>
