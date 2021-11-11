@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useCallback } from "react";
 import Image from "next/image";
 
 import home from "../../styles/home.module.sass";
@@ -9,11 +9,9 @@ import turnOff from "../../public/stuff/lamp/lamp_off.png";
 export default function Lamb() {
   const [switchLamb, setSwitchLamb] = useState(true);
 
-  function handleSwitchLamb() {
+  const handleSwitchLamb = useCallback(() => {
     setSwitchLamb(!switchLamb);
-  }
-
-  useEffect(() => {}, [switchLamb]);
+  },[switchLamb])
 
   return (
     <>
