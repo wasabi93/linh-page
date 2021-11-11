@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo, useCallback } from "react";
 
 import home from "../styles/home.module.sass";
 import FullStuff from "./FullStuff";
@@ -8,161 +8,67 @@ import PopupList from "./popup/PopupList";
 import PopupPortrait from "./popup/PopupPortrait";
 
 export default function Home({posts}) {
+  const [showPopup, setShowPopup] = useState(false);
+  const [popupType, setPopupType] = useState('Popup')
+  const [postType, setPostType] = useState('others')
 
-  const [popup2022, setPopup2022] = useState(false);
-  const [popup2021, setPopup2021] = useState(false);
-  const [popup2020, setPopup2020] = useState(false);
-  const [popup2019, setPopup2019] = useState(false);
-  const [popup2018, setPopup2018] = useState(false);
-  const [popup2015, setPopup2015] = useState(false);
-  const [popupOther, setPopupOther] = useState(false)
-  const [popupPhoto1, setPopupPhoto1] = useState(false);
-  const [popupPhoto2, setPopupPhoto2] = useState(false);
-  const [popupPhoto3, setPopupPhoto3] = useState(false);
-  const [popupPhoto4, setPopupPhoto4] = useState(false);
-  const [popupPhoto5, setPopupPhoto5] = useState(false);
-  const [popupOnWall, setPopupOnWall] = useState(false);
-  const [popupQuote, setPopupQuote] = useState(false);
-  const [popupLaptop, setPopupLaptop] = useState(false);
-  const [popupYellow, setPopupYellow] = useState(false);
-  const [popupBlue, setPopupBlue] = useState(false);
-  const [popupRed, setPopupRed] = useState(false);
-  const [popupYellowRight, setPopupYellowRight] = useState(false);
-  const [popupPink, setPopupPink] = useState(false);
-  const [popupNote, setPopupNote] = useState(false);
-  
+  const PopupComponent = useMemo(() => {
+    switch (popupType) {
+      case 'PopupPortrait': return PopupPortrait;
+      case 'PopupLaptop': return PopupLaptop;
+      case 'PopupList': return PopupList;
+      default: return Popup;
+    }
+  }, [popupType])
 
-  const photo1 = posts.filter((post) => post.album === 'photo1');
-  const photo2 = posts.filter((post) => post.album === 'photo2');
-  const photo3 = posts.filter((post) => post.album === 'photo3');
-  const photo4 = posts.filter((post) => post.album === 'photo4');
-  const photo5 = posts.filter((post) => post.album === 'photo5');
-  const photoOnWall = posts.filter((post) => post.album === 'photoWall');
+  const filteredPosts = useMemo(() => {
+    return posts.filter((post) => post.album === postType);
+  }, [postType, posts])
+
   const yellowBook = posts.filter((post) => post.album === 'bookYellow');
   const blueBook = posts.filter((post) => post.album === 'bookBlue');
   const redBook = posts.filter((post) => post.album === 'bookRed');
   const pinkBook = posts.filter((post) => post.album === 'bookPink');
   const yellowRight = posts.filter((post) => post.album === 'bookYellowRight');
-  const noteBook = posts.filter((post) => post.album === 'notebook');
-  const quoteNote = posts.filter((post) => post.album === 'quoteNote');
-  const laptop = posts.filter((post) => post.album === 'laptop');
-  const year2022 = posts.filter((post) => post.album === 'year2022');
-  const year2021 = posts.filter((post) => post.album === 'year2021');
-  const year2020 = posts.filter((post) => post.album === 'year2020');
-  const year2019 = posts.filter((post) => post.album === 'year2019');
-  const year2018 = posts.filter((post) => post.album === 'year2018');
-  const year2015 = posts.filter((post) => post.album === 'year2015-17');
-  const others = posts.filter((post) => post.album === 'others');
 
+  const showPopupWithData = useCallback((postType, popupType) => {
+    setPostType(postType)
+    setPopupType(popupType)
+    setShowPopup(true)
+  }, [])
 
+  // popup list
+  const handleOpenPopup2022 = useCallback(() => showPopupWithData('year2022', 'PopupList'), [])
+  const handleOpenPopup2021 = useCallback(() => showPopupWithData('year2021', 'PopupList'), [])
+  const handleOpenPopup2020 = useCallback(() => showPopupWithData('year2020', 'PopupList'), [])
+  const handleOpenPopup2019 = useCallback(() => showPopupWithData('year2019', 'PopupList'), [])
+  const handleOpenPopup2018 = useCallback(() => showPopupWithData('year2018', 'PopupList'), [])
+  const handleOpenPopup2015 = useCallback(() => showPopupWithData('year2015-17', 'PopupList'), [])
+  const handleOpenPopupOther = useCallback(() => showPopupWithData('others', 'PopupList'), [])
 
-  function handleOpenPopup2022() {
-    setPopup2022(true);
-  }
+  // popup portrait
+  const handleOpenPopupPhoto1 = useCallback(() => showPopupWithData('photo1', 'PopupPortrait'), [])
+  const handleOpenPopupPhoto2 = useCallback(() => showPopupWithData('photo2', 'PopupPortrait'), [])
+  const handleOpenPopupPhoto3 = useCallback(() => showPopupWithData('photo3', 'PopupPortrait'), [])
+  const handleOpenPopupPhoto4 = useCallback(() => showPopupWithData('photo4', 'PopupPortrait'), [])
+  const handleOpenPopupPhoto5 = useCallback(() => showPopupWithData('photo5', 'PopupPortrait'), [])
+  const handleOpenPopupOnWall = useCallback(() => showPopupWithData('photoWall', 'PopupPortrait'), [])
 
-  function handleOpenPopup2021() {
-    setPopup2021(true);
-  }
+  // popup default
+  const handleOpenPopupYellow = useCallback(() => showPopupWithData('bookYellow', 'Popup'), [])
+  const handleOpenPopupBlue = useCallback(() => showPopupWithData('bookBlue', 'Popup'), [])
+  const handleOpenPopupRed = useCallback(() => showPopupWithData('bookRed', 'Popup'), [])
+  const handleOpenPopupPink = useCallback(() => showPopupWithData('bookPink', 'Popup'), [])
+  const handleOpenPopupYellowRight = useCallback(() => showPopupWithData('bookYellowRight', 'Popup'), [])
+  const handleOpenPopupNote = useCallback(() => showPopupWithData('notebook', 'Popup'), [])
+  const handleOpenPopupQuote = useCallback(() => showPopupWithData('quoteNote', 'Popup'), [])
 
-  function handleOpenPopup2020() {
-    setPopup2020(true);
-  }
+  // popup laptop
+  const handleOpenPopupLaptop = useCallback(() => showPopupWithData('laptop', 'PopupLaptop'), [])
 
-  function handleOpenPopup2019() {
-    setPopup2019(true);
-  }
-
-  function handleOpenPopup2018() {
-    setPopup2018(true);
-  }
-
-  function handleOpenPopup2015() {
-    setPopup2015(true);
-  }
-
-  function handleOpenPopupOther() {
-    setPopupOther(true);
-  }
-  
-  function handleOpenPopupPhoto1() {
-    setPopupPhoto1(true);
-  }
-
-  function handleOpenPopupPhoto2() {
-    setPopupPhoto2(true);
-  }
-
-  function handleOpenPopupPhoto3() {
-    setPopupPhoto3(true);
-  }
-
-  function handleOpenPopupPhoto4() {
-    setPopupPhoto4(true);
-  }
-
-  function handleOpenPopupPhoto5() {
-    setPopupPhoto5(true);
-  }
-
-  function handleOpenPopupOnWall() {
-    setPopupOnWall(true);
-  }
-
-  function handleOpenPopupQuote() {
-    setPopupQuote(true);
-  }
-
-  function handleOpenPopupLaptop() {
-    setPopupLaptop(true);
-  }
-
-  function handleOpenPopupYellow() {
-    setPopupYellow(true);
-  }
-
-  function handleOpenPopupBlue() {
-    setPopupBlue(true);
-  }
-
-  function handleOpenPopupRed() {
-    setPopupRed(true);
-  }
-
-  function handleOpenPopupYellowRight() {
-    setPopupYellowRight(true);
-  }
-
-  function handleOpenPopupPink() {
-    setPopupPink(true);
-  }
-
-  function handleOpenPopupNote() {
-    setPopupNote(true);
-  }
-
-  function handleClosePopup() {
-    setPopup2022(false);
-    setPopup2021(false);
-    setPopup2020(false);
-    setPopup2019(false);
-    setPopup2018(false);
-    setPopup2015(false);
-    setPopupOther(false);
-    setPopupPhoto1(false);
-    setPopupPhoto2(false);
-    setPopupPhoto3(false);
-    setPopupPhoto4(false);
-    setPopupPhoto5(false);
-    setPopupOnWall(false);
-    setPopupQuote(false);
-    setPopupLaptop(false);
-    setPopupYellow(false);
-    setPopupBlue(false);
-    setPopupRed(false);
-    setPopupYellowRight(false);
-    setPopupPink(false);
-    setPopupNote(false);
-  }
+  const handleClosePopup = useCallback(() => {
+    setShowPopup(false)
+  }, [])
 
   return (
     <main>
@@ -197,69 +103,9 @@ export default function Home({posts}) {
           posts={posts}
         />
       </div>
-      {popupPhoto1 ? (
-        <PopupPortrait posts={photo1} handleClosePopup={handleClosePopup} />
-      ) : null}
-      {popupPhoto2 ? (
-        <PopupPortrait posts={photo2} handleClosePopup={handleClosePopup} />
-      ) : null}
-      {popupPhoto3 ? (
-        <PopupPortrait posts={photo3} handleClosePopup={handleClosePopup} />
-      ) : null}
-      {popupPhoto4 ? (
-        <PopupPortrait posts={photo4} handleClosePopup={handleClosePopup} />
-      ) : null}
-      {popupPhoto5 ? (
-        <PopupPortrait posts={photo5} handleClosePopup={handleClosePopup} />
-      ) : null}
-      {popupOnWall ? (
-        <PopupPortrait posts={photoOnWall} handleClosePopup={handleClosePopup} />
-      ) : null}
-      {popupYellow ? (
-        <Popup posts={yellowBook} handleClosePopup={handleClosePopup} />
-      ) : null}
-      {popupBlue ? (
-        <Popup posts={blueBook} handleClosePopup={handleClosePopup} />
-      ) : null}
-      {popupRed ? (
-        <Popup posts={redBook} handleClosePopup={handleClosePopup} />
-      ) : null}
-      {popupPink ? (
-        <Popup posts={pinkBook} handleClosePopup={handleClosePopup} />
-      ) : null}
-      {popupYellowRight ? (
-        <Popup posts={yellowRight} handleClosePopup={handleClosePopup} />
-      ) : null}
-      {popupNote ? (
-        <Popup posts={noteBook} handleClosePopup={handleClosePopup} />
-      ) : null}
-      {popupQuote ? (
-        <Popup posts={quoteNote} handleClosePopup={handleClosePopup} />
-      ) : null}
-      {popupLaptop ? (
-        <PopupLaptop post={laptop} handleClosePopup={handleClosePopup} />
-      ) : null}
-      {popup2015 ? (
-        <PopupList posts={year2015} handleClosePopup={handleClosePopup} />
-      ) : null}
-      {popup2018 ? (
-        <PopupList posts={year2018} handleClosePopup={handleClosePopup} />
-      ) : null}
-      {popup2019 ? (
-        <PopupList posts={year2019} handleClosePopup={handleClosePopup} />
-      ) : null}
-      {popup2020 ? (
-        <PopupList posts={year2020} handleClosePopup={handleClosePopup} />
-      ) : null}
-      {popup2021 ? (
-        <PopupList posts={year2021} handleClosePopup={handleClosePopup} />
-      ) : null}
-      {popup2022 ? (
-        <PopupList posts={year2022} handleClosePopup={handleClosePopup} />
-      ) : null}
-      {popupOther ? (
-        <PopupList posts={others} handleClosePopup={handleClosePopup} />
-      ) : null}
+      {showPopup && (
+        <PopupComponent posts={filteredPosts} handleClosePopup={handleClosePopup} />
+      )}
     </main>
   );
 }

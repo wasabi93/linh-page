@@ -3,16 +3,16 @@ import Image from "next/image";
 import home from "../../styles/home.module.sass";
 
 export default function PopupLaptop(props) {
-  const { post, handleClosePopup } = props;
+  const { posts, handleClosePopup } = props;
   return (
     <div className={home.blurContainer}>
       <div className={home.blur}>
         <div className={home.popupLaptop}>
           <div className={home.laptop}>
             <div className={home.imageContainer}>
-              {post[0].link ? (
+              {posts[0].link ? (
                 <Image
-                  src={post[0].link}
+                  src={posts[0].link}
                   alt=""
                   layout="fill"
                   objectFit="contain"
@@ -20,7 +20,7 @@ export default function PopupLaptop(props) {
               ) : null}
             </div>
             <div className={home.description}>
-              <p>{post.length !== 0 ? post[0].description : null}</p>
+              <p>{posts.length !== 0 ? posts[0].description : null}</p>
             </div>
           </div>
         </div>
