@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
 import moment from "moment";
-import { useState } from "react";
+import { useState, useMemo, useCallback } from "react";
 
 import admin from "../../styles/admin.module.sass";
 
@@ -9,11 +9,11 @@ const PostAdmin = ({ post, setCurrentId }) => {
   const [popupDelete, setPopupDelete] = useState(false);
   const router = useRouter();
 
-  const imageUrl = post.link;
+  const imageUrl = useMemo(() => post.link, []);
 
-  const handlePopupDelete = () => {
+  const handlePopupDelete = useCallback(() => {
     setPopupDelete(!popupDelete);
-  };
+  }, []);
 
   const handleDelete = async () => {
     try {
@@ -27,9 +27,9 @@ const PostAdmin = ({ post, setCurrentId }) => {
     setPopupDelete(!popupDelete);
   };
 
-  const handleEdit = () => {
+  const handleEdit = useCallback(() => {
     setCurrentId(post._id);
-  };
+  }, []);
 
   return (
     <div className={admin.post}>
@@ -52,19 +52,21 @@ const PostAdmin = ({ post, setCurrentId }) => {
         <button onClick={handlePopupDelete}>Delete</button>
         <button onClick={handleEdit}>Edit</button>
       </div>
-      {popupDelete ? <div className={admin.blurContainer}>
-        <div className={admin.blur}>
-          <div className={admin.popup}>
-            <p>Ché chắc chứ???</p>
-            <p>Xóa hình "{post.name}" nhóe???</p>
-            <div className={admin.buttonPopup}>
-            <button onClick={handleDelete}>Yes</button>
-            <button onClick={handlePopupDelete}>No</button>
+      {popupDelete ? (
+        <div className={admin.blurContainer}>
+          <div className={admin.blur}>
+            <div className={admin.popup}>
+              <p>Ché chắc chứ???</p>
+              <p>Xóa hình "{post.name}" nhóe???</p>
+              <div className={admin.buttonPopup}>
+                <button onClick={handleDelete}>Yes</button>
+                <button onClick={handlePopupDelete}>No</button>
+              </div>
             </div>
+            <div className={admin.blocker} onClick={handlePopupDelete}></div>
           </div>
-          <div className={admin.blocker} onClick={handlePopupDelete}></div>
         </div>
-      </div> : null}
+      ) : null}
     </div>
   );
 };

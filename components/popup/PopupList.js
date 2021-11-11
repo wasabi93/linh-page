@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useMemo, useCallback } from "react";
 
 import home from "../../styles/home.module.sass";
 import Popup from "./Popup";
@@ -8,19 +8,22 @@ export default function PopupList(props) {
   const { posts, handleClosePopup } = props;
 
   const [popupPost, SetPopupPost] = useState(false);
-  const [position, setPosition] = useState()
+  const [position, setPosition] = useState();
 
-  const handleOpenPopupPost = (e) => {
+  const handleOpenPopupPost = useCallback((e) => {
+    e.preventDefault();
     SetPopupPost(true);
-    setPosition(parseInt(e.currentTarget.getAttribute('value')))
-  };
+    setPosition(parseInt(e.currentTarget.getAttribute("value")));
+  }, []);
 
-
-  const handleClosePopupPost = () => {
+  const handleClosePopupPost = useCallback(() => {
     SetPopupPost(false);
-  };
+  }, []);
 
-  posts.sort((a, b) => a.position - b.position);
+  const sortedPosts = useMemo(
+    () => posts.sort((a, b) => a.position - b.position),
+    []
+  );
 
   return (
     <>
@@ -30,8 +33,8 @@ export default function PopupList(props) {
             <div className={home.popupList}>
               <div className={home.listContainer}>
                 <div className={home.column}>
-                  {posts.length
-                    ? posts
+                  {sortedPosts.length
+                    ? sortedPosts
                         .filter((_, i) => i % 3 == 0)
                         .map((post) =>
                           post.link ? (
@@ -53,8 +56,8 @@ export default function PopupList(props) {
                     : null}
                 </div>
                 <div className={home.column}>
-                  {posts.length
-                    ? posts
+                  {sortedPosts.length
+                    ? sortedPosts
                         .slice(1)
                         .filter((_, i) => i % 3 == 0)
                         .map((post) =>
@@ -77,8 +80,8 @@ export default function PopupList(props) {
                     : null}
                 </div>
                 <div className={home.column}>
-                  {posts.length
-                    ? posts
+                  {sortedPosts.length
+                    ? sortedPosts
                         .slice(2)
                         .filter((_, i) => i % 3 == 0)
                         .map((post) =>
@@ -107,7 +110,12 @@ export default function PopupList(props) {
         </div>
       ) : null}
       {popupPost ? (
-        <Popup posts={posts} popupPost={popupPost} position={position} handleClosePopupPost={handleClosePopupPost} />
+        <Popup
+          posts={sortedPosts}
+          popupPost={popupPost}
+          position={position}
+          handleClosePopupPost={handleClosePopupPost}
+        />
       ) : null}
     </>
   );

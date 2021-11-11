@@ -1,11 +1,9 @@
 module.exports = {
   reactStrictMode: true,
-}
-
-module.exports = {
+  react: {
+    useSuspense: false,
+  },
   images: {
-      domains: ['media.giphy.com','i.imgur.com']
-  }
+    domains: ["media.giphy.com", "i.imgur.com"],
+  },
 };
-
-

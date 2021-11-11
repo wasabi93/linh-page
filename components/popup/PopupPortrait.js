@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useMemo, useCallback } from "react";
 
 import home from "../../styles/home.module.sass";
 import left from "../../public/stuff/arrow/left.png";
@@ -9,27 +9,26 @@ export default function PopupPortrait(props) {
   const { posts, handleClosePopup } = props;
   const [current, setCurrent] = useState(0);
 
-  posts.sort((a, b) => a.position - b.position);
+  const sortedPosts = useMemo(
+    () => posts.sort((a, b) => a.position - b.position),
+    []
+  );
 
-  function handleCurrentUp() {
-    setCurrent(current + 1);
-  }
+  const handleCurrentUp = useCallback(() => setCurrent(current + 1), []);
 
-  function handleCurrentDown() {
-    setCurrent(current - 1);
-  }
+  const handleCurrentDown = useCallback(() => setCurrent(current - 1), []);
 
   return (
     <div className={home.blurContainer}>
       <div className={home.blur}>
         <div className={home.popup}>
           <div className={home.portraitContainer}>
-            {posts.length ? (
+            {sortedPosts.length ? (
               <div className={home.portrait}>
                 <div className={home.imageContainer}>
-                  {posts[current].link ? (
+                  {sortedPosts[current].link ? (
                     <Image
-                      src={posts[current].link}
+                      src={sortedPosts[current].link}
                       alt=""
                       layout="fill"
                       objectFit="contain"
@@ -38,8 +37,8 @@ export default function PopupPortrait(props) {
                 </div>
                 <div className={home.description}>
                   <p>
-                    {posts[current].length !== 0
-                      ? posts[current].description
+                    {sortedPosts[current].length !== 0
+                      ? sortedPosts[current].description
                       : null}
                   </p>
                 </div>
@@ -53,7 +52,7 @@ export default function PopupPortrait(props) {
             <Image src={left} alt="" layout="responsive" />
           </div>
         ) : null}
-        {current !== posts.length - 1 && posts.length >= 2 ? (
+        {current !== sortedPosts.length - 1 && sortedPosts.length >= 2 ? (
           <div className={home.rightArrow} onClick={handleCurrentUp}>
             <Image src={right} alt="" layout="responsive" />
           </div>

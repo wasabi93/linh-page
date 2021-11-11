@@ -1,13 +1,10 @@
-import React, { useState } from "react";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import React, { useState, useCallback } from "react";
 import { login } from "../../lib/auth";
 
 import form from "../../styles/form.module.sass";
 
 export default function LoginForm() {
   const [user, setUser] = useState({ user: "", password: "" });
-  const router = useRouter();
   const contentType = "application/json";
 
   const getUser = async (user) => {
@@ -31,10 +28,10 @@ export default function LoginForm() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = useCallback((e) => {
     e.preventDefault();
     getUser(user);
-  };
+  }, []);
 
   return (
     <div className={form.loginContainer}>

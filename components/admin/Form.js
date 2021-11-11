@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import { useRouter } from "next/router";
 import { mutate } from "swr";
 
@@ -16,9 +16,12 @@ export default function Form({ posts, currentId, setCurrentId }) {
     likes: 0,
   });
 
-  const post = posts.filter((post) => post._id === currentId) 
+  const post = useMemo(
+    () => posts.filter((post) => post._id === currentId),
+    []
+  );
 
-  const clear = () => {
+  const clear = useCallback(() => {
     setCurrentId(0);
     setForm({
       album: "",
@@ -27,34 +30,33 @@ export default function Form({ posts, currentId, setCurrentId }) {
       name: "",
       link: "",
       likes: 0,
-    })
-  }
+    });
+  }, []);
 
   /* The PUT method edits an existing entry in the mongodb database. */
   const putData = async (form) => {
-
     try {
       const res = await fetch(`/api/posts/${currentId}`, {
-        method: 'PUT',
+        method: "PUT",
         headers: {
           Accept: contentType,
-          'Content-Type': contentType,
+          "Content-Type": contentType,
         },
         body: JSON.stringify(form),
-      })
+      });
 
       // Throw error with status code in case Fetch API req failed
       if (!res.ok) {
-        throw new Error(res.status)
+        throw new Error(res.status);
       }
 
-      const { data } = await res.json()
-      mutate(`/api/posts/${currentId}`, data, false) // Update the local data without a revalidation
-      router.push('/admin')
+      const { data } = await res.json();
+      mutate(`/api/posts/${currentId}`, data, false); // Update the local data without a revalidation
+      router.push("/admin");
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
   /* The POST method adds a new entry in the mongodb database. */
   const postData = async (form) => {
     try {
@@ -71,21 +73,21 @@ export default function Form({ posts, currentId, setCurrentId }) {
       if (!res.ok) {
         throw new Error(res.status);
       }
-      router.push('/admin')
+      router.push("/admin");
     } catch (error) {
       console.log(error);
     }
   };
 
-  const handleSummit = (e) => {
+  const handleSummit = useCallback((e) => {
     e.preventDefault();
     currentId === 0 ? postData(form) : putData(form);
-    setCurrentId(0)
-    clear()
-  };
+    setCurrentId(0);
+    clear();
+  }, []);
 
   useEffect(() => {
-    if(currentId !== 0) setForm(post[0])
+    if (currentId !== 0) setForm(post[0]);
   }, [post[0]]);
 
   return (
@@ -95,7 +97,9 @@ export default function Form({ posts, currentId, setCurrentId }) {
       className={admin.form}
       onSubmit={handleSummit}
     >
-      <div className={admin.title}>{currentId === 0 ? `Create Post` : `Editing ${post[0].name}`}</div>
+      <div className={admin.title}>
+        {currentId === 0 ? `Create Post` : `Editing ${post[0].name}`}
+      </div>
       <label htmlFor="album">Choose an album:</label>
       <select
         id="album"
@@ -161,7 +165,9 @@ export default function Form({ posts, currentId, setCurrentId }) {
       />
       <div className={admin.button}>
         <button type="submit">{currentId === 0 ? `Submit` : `Edit`}</button>
-        <button type='button' onClick={clear}>Clear</button>
+        <button type="button" onClick={clear}>
+          Clear
+        </button>
       </div>
     </form>
   );
