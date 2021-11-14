@@ -16,10 +16,7 @@ export default function Form({ posts, currentId, setCurrentId }) {
     likes: 0,
   });
 
-  const post = useMemo(
-    () => posts.filter((post) => post._id === currentId),
-    []
-  );
+  const post = posts.filter((post) => post._id === currentId)
 
   const clear = useCallback(() => {
     setCurrentId(0);
@@ -51,8 +48,8 @@ export default function Form({ posts, currentId, setCurrentId }) {
       }
 
       const { data } = await res.json();
-      mutate(`/api/posts/${currentId}`, data, false); // Update the local data without a revalidation
       router.push("/admin");
+      mutate(`/api/posts/${currentId}`, data, false); // Update the local data without a revalidation
     } catch (error) {
       console.log(error);
     }
@@ -79,15 +76,20 @@ export default function Form({ posts, currentId, setCurrentId }) {
     }
   };
 
-  const handleSummit = useCallback((e) => {
-    e.preventDefault();
-    currentId === 0 ? postData(form) : putData(form);
-    setCurrentId(0);
-    clear();
-  }, []);
+  const handleSummit = useCallback(
+    (e) => {
+      e.preventDefault();
+      currentId === 0 ? postData(form) : putData(form);
+      setCurrentId(0);
+      clear();
+    },
+    [form]
+  );
+
+  console.log(form)
 
   useEffect(() => {
-    if (currentId !== 0) setForm(post[0]);
+    if (currentId !== 0) return setForm(post[0]);
   }, [post[0]]);
 
   return (
@@ -98,7 +100,7 @@ export default function Form({ posts, currentId, setCurrentId }) {
       onSubmit={handleSummit}
     >
       <div className={admin.title}>
-        {currentId === 0 ? `Create Post` : `Editing ${post[0].name}`}
+        {currentId === 0 ? `Create Post` : `Editing ${form.name}`}
       </div>
       <label htmlFor="album">Choose an album:</label>
       <select

@@ -8,8 +8,8 @@ const Admin = ({ posts }) => {
   const [currentId, setCurrentId] = useState(0);
   const handleLogout = useCallback((e) => {
     e.preventDefault();
-    logout()
-  },[])
+    logout();
+  }, []);
 
   return (
     <div className={admin.adminContainer}>
@@ -31,7 +31,9 @@ const Admin = ({ posts }) => {
             <li>
               <a href="#laptop">Laptop</a>
             </li>
-            <li><button onClick={handleLogout}>Logout</button></li>
+            <li>
+              <button onClick={handleLogout}>Logout</button>
+            </li>
           </ul>
         </div>
       </header>
@@ -390,7 +392,6 @@ const Admin = ({ posts }) => {
       </main>
     </div>
   );
-}
+};
 
-
-export default Admin
+export default Admin;

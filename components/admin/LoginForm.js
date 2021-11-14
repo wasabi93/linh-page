@@ -31,7 +31,7 @@ export default function LoginForm() {
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
     getUser(user);
-  }, []);
+  }, [user]);
 
   return (
     <div className={form.loginContainer}>

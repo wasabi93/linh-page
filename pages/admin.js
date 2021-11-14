@@ -24,7 +24,7 @@ const adminPage = () => {
     return () => {
       isMounted = false;
     };
-  }, [posts]);
+  }, []);
 
   return (
     <div className={admin.container}>

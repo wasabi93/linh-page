@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { useRouter } from "next/router";
 import moment from "moment";
 import { useState, useMemo, useCallback } from "react";
 
@@ -7,7 +6,6 @@ import admin from "../../styles/admin.module.sass";
 
 const PostAdmin = ({ post, setCurrentId }) => {
   const [popupDelete, setPopupDelete] = useState(false);
-  const router = useRouter();
 
   const imageUrl = useMemo(() => post.link, []);
 
@@ -20,16 +18,13 @@ const PostAdmin = ({ post, setCurrentId }) => {
       await fetch(`/api/posts/${post._id}`, {
         method: "Delete",
       });
-      router.push("/admin");
     } catch (error) {
       console.log(error);
     }
     setPopupDelete(!popupDelete);
   };
 
-  const handleEdit = useCallback(() => {
-    setCurrentId(post._id);
-  }, []);
+  const handleEdit = useCallback(() => setCurrentId(post._id), []);
 
   return (
     <div className={admin.post}>
