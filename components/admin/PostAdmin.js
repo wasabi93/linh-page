@@ -13,7 +13,7 @@ const PostAdmin = ({ post, setCurrentId }) => {
 
   const handlePopupDelete = useCallback(() => {
     setPopupDelete(!popupDelete);
-  }, []);
+  }, [popupDelete]);
 
   const handleDelete = async () => {
     try {
