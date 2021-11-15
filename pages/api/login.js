@@ -5,7 +5,7 @@ import User from '../../models/User'
 const Login = async (req, res) => {
   const { username, password } = req.body
   
-  const db = await dbConnect()
+  await dbConnect()
   try {
     let user = await User.findOne({ username: username })
 
@@ -27,7 +27,6 @@ const Login = async (req, res) => {
     res.status(400).json({ success: false })
   }
 
-  db.connection.close
 }
 
 export default Login

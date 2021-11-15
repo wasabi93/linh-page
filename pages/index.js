@@ -33,7 +33,7 @@ const HomePage = ({ posts }) => {
 
 /* Retrieves pet(s) data from mongodb database */
 export async function getServerSideProps() {
-  const db = await dbConnect()
+  await dbConnect()
 
   /* find all the data in our database */
   const result = await Post.find({})
@@ -43,8 +43,7 @@ export async function getServerSideProps() {
     return post
   })
 
-  db.connection.close()
-  return { props: { posts: posts } }
+  return { props: { data: posts } }
 }
 
 export default HomePage

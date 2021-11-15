@@ -13,7 +13,7 @@ const AdminPage = () => {
     const posts = await res.json()
     return posts.data
   }
-
+  
   useEffect(() => {
     let isMounted = true
     getPosts()
@@ -24,7 +24,8 @@ const AdminPage = () => {
     return () => {
       isMounted = false
     }
-  }, [posts])
+  }, [])
+
   console.log(posts)
 
   return (

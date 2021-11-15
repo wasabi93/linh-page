@@ -41,7 +41,7 @@ export default function PopupList(props) {
                           <div
                             className={home.post}
                             key={post._id}
-                            value={post.position - 6}
+                            value={post.position - 1}
                             onClick={handleOpenPopupPost}
                           >
                             <Image
@@ -65,7 +65,7 @@ export default function PopupList(props) {
                           <div
                             className={home.post}
                             key={post._id}
-                            value={post.position - 6}
+                            value={post.position - 1}
                             onClick={handleOpenPopupPost}
                           >
                             <Image
@@ -89,7 +89,7 @@ export default function PopupList(props) {
                           <div
                             className={home.post}
                             key={post._id}
-                            value={post.position - 6}
+                            value={post.position - 1}
                             onClick={handleOpenPopupPost}
                           >
                             <Image

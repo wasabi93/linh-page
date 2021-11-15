@@ -1,14 +1,12 @@
-import { useState, useEffect, useCallback } from 'react'
-import { useRouter } from 'next/router'
+import { useState, useEffect, useCallback, useMemo } from 'react'
 import { mutate } from 'swr'
 
 import admin from '../../styles/admin.module.sass'
 
 export default function Form({ posts, currentId, setCurrentId }) {
-  const router = useRouter()
   const contentType = 'application/json'
   const [form, setForm] = useState({
-    album: '',
+    album: 'year2022',
     description: '',
     position: '',
     name: '',
@@ -16,7 +14,7 @@ export default function Form({ posts, currentId, setCurrentId }) {
     likes: 0,
   })
 
-  const post = posts.filter((post) => post._id === currentId)
+  const post = useMemo(() => posts.filter((post) => post._id === currentId),[currentId,posts])
 
   const clear = useCallback(() => {
     setCurrentId(0)
@@ -51,7 +49,6 @@ export default function Form({ posts, currentId, setCurrentId }) {
           }
 
           const { data } = await res.json()
-          router.push('/admin')
           mutate(`/api/posts/${currentId}`, data, false) // Update the local data without a revalidation
         } catch (error) {
           console.log(error)
@@ -73,7 +70,6 @@ export default function Form({ posts, currentId, setCurrentId }) {
           if (!res.ok) {
             throw new Error(res.status)
           }
-          router.push('/admin')
         } catch (error) {
           console.log(error)
         }
@@ -83,14 +79,12 @@ export default function Form({ posts, currentId, setCurrentId }) {
       setCurrentId(0)
       clear()
     },
-    [setCurrentId, clear, currentId, form, router]
+    [setCurrentId, clear, currentId, form]
   )
 
-  console.log(form)
-
   useEffect(() => {
-    if (currentId !== 0) return setForm(post[0])
-  }, [currentId,post])
+    if (currentId !== 0) setForm(post[0])
+  }, [post,currentId])
 
   return (
     <form
@@ -110,7 +104,6 @@ export default function Form({ posts, currentId, setCurrentId }) {
         value={form.album}
         onChange={(e) => setForm({ ...form, album: e.target.value })}
       >
-        <option>choose album</option>
         <option value="year2022">Year2022</option>
         <option value="year2021">Year2021</option>
         <option value="year2020">Year2020</option>
@@ -139,6 +132,7 @@ export default function Form({ posts, currentId, setCurrentId }) {
         placeholder="name..."
         name="name"
         value={form.name}
+        required
         onChange={(e) => setForm({ ...form, name: e.target.value })}
       />
       <input
@@ -147,6 +141,7 @@ export default function Form({ posts, currentId, setCurrentId }) {
         placeholder="position..."
         name="position"
         value={form.position}
+        required
         onChange={(e) => setForm({ ...form, position: e.target.value })}
       />
       <input
@@ -156,6 +151,7 @@ export default function Form({ posts, currentId, setCurrentId }) {
         name="description"
         value={form.description}
         onChange={(e) => setForm({ ...form, description: e.target.value })}
+        required
       />
       <input
         className={admin.input}
@@ -163,6 +159,7 @@ export default function Form({ posts, currentId, setCurrentId }) {
         placeholder="Image-Url..."
         name="link"
         value={form.link}
+        required
         onChange={(e) => setForm({ ...form, link: e.target.value })}
       />
       <div className={admin.button}>

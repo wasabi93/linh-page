@@ -4,7 +4,7 @@ import Post from '../../../models/Post'
 export default async function handler(req, res) {
   const { method } = req
 
-  const db = await dbConnect()
+  await dbConnect()
 
   switch (method) {
   case 'GET':
@@ -30,5 +30,4 @@ export default async function handler(req, res) {
     break
   }
 
-  db.connection.close()
 }
