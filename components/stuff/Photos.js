@@ -1,13 +1,13 @@
-import Image from "next/image";
+import Image from 'next/image'
 
-import home from "../../styles/home.module.sass";
+import home from '../../styles/home.module.sass'
 
-import photoBlue from "../../public/stuff/photos/blue_photo.png";
-import photoDark from "../../public/stuff/photos/dark_blue_photo.png";
-import photoWall from "../../public/stuff/photos/photo_on_wall.png";
-import photoPink from "../../public/stuff/photos/pink_photo.png";
-import photoRed from "../../public/stuff/photos/red_photo.png";
-import photoYellow from "../../public/stuff/photos/yellow_photo.png";
+import photoBlue from '../../public/stuff/photos/blue_photo.png'
+import photoDark from '../../public/stuff/photos/dark_blue_photo.png'
+import photoWall from '../../public/stuff/photos/photo_on_wall.png'
+import photoPink from '../../public/stuff/photos/pink_photo.png'
+import photoRed from '../../public/stuff/photos/red_photo.png'
+import photoYellow from '../../public/stuff/photos/yellow_photo.png'
 
 export default function Photos(props) {
   const {
@@ -17,7 +17,7 @@ export default function Photos(props) {
     handleOpenPopupPhoto4,
     handleOpenPopupPhoto5,
     handleOpenPopupOnWall
-  } = props;
+  } = props
 
   return (
     <>
@@ -40,5 +40,5 @@ export default function Photos(props) {
         <Image src={photoYellow} alt="" layout="responsive" />
       </div>
     </>
-  );
+  )
 }

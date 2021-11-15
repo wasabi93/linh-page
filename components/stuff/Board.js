@@ -1,13 +1,13 @@
-import Image from "next/image";
+import Image from 'next/image'
 
-import home from "../../styles/home.module.sass";
-import year2015 from "../../public/stuff/board/15-17.png";
-import year2018 from "../../public/stuff/board/2018.png";
-import year2019 from "../../public/stuff/board/2019.png";
-import year2020 from "../../public/stuff/board/2020.png";
-import year2021 from "../../public/stuff/board/2021.png";
-import year2022 from "../../public/stuff/board/2022.png";
-import yearOthers from "../../public/stuff/board/others.png";
+import home from '../../styles/home.module.sass'
+import year2015 from '../../public/stuff/board/15-17.png'
+import year2018 from '../../public/stuff/board/2018.png'
+import year2019 from '../../public/stuff/board/2019.png'
+import year2020 from '../../public/stuff/board/2020.png'
+import year2021 from '../../public/stuff/board/2021.png'
+import year2022 from '../../public/stuff/board/2022.png'
+import yearOthers from '../../public/stuff/board/others.png'
 
 export default function Board(props) {
   const {
@@ -18,7 +18,7 @@ export default function Board(props) {
     handleOpenPopup2018,
     handleOpenPopup2015,
     handleOpenPopupOther,
-  } = props;
+  } = props
   return (
     <div className={home.board}>
       <div className={home.bgBoard}>
@@ -45,5 +45,5 @@ export default function Board(props) {
         </div>
       </div>
     </div>
-  );
+  )
 }

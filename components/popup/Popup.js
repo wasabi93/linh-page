@@ -1,29 +1,33 @@
-import Image from "next/image";
-import { useState, useMemo, useCallback } from "react";
-import { AiFillCloseCircle } from "react-icons/ai";
-import { MdOutlineIncompleteCircle } from "react-icons/md";
+import Image from 'next/image'
+import { useState, useMemo, useCallback, useEffect } from 'react'
+import { AiFillCloseCircle } from 'react-icons/ai'
+import { MdOutlineIncompleteCircle } from 'react-icons/md'
 
-import home from "../../styles/home.module.sass";
-import left from "../../public/stuff/arrow/left.png";
-import right from "../../public/stuff/arrow/right.png";
+import home from '../../styles/home.module.sass'
+import left from '../../public/stuff/arrow/left.png'
+import right from '../../public/stuff/arrow/right.png'
 
 const Popup = (props) => {
   const { posts, popupPost, handleClosePopup, handleClosePopupPost, position } =
-    props;
-  const [current, setCurrent] = position ? useState(position) : useState(0);
+    props
+  const [current, setCurrent] = useState(0)
+
+  useEffect(() => {
+    position ? setCurrent(position) : setCurrent(0)
+  }, [position,setCurrent])
 
   const sortedPosts = useMemo(() => {
-    return posts.sort((a, b) => a.position - b.position);
-  }, []);
+    return posts.sort((a, b) => a.position - b.position)
+  }, [posts])
 
   const handleCurrent = useCallback((e) => {
-    e.preventDefault();
-    setCurrent(parseInt(e.currentTarget.getAttribute("value")));
-  }, []);
+    e.preventDefault()
+    setCurrent(parseInt(e.currentTarget.getAttribute('value')))
+  }, [])
 
-  const handleCurrentUp = useCallback(() => setCurrent(current + 1), [current]);
+  const handleCurrentUp = useCallback(() => setCurrent(current + 1), [current])
 
-  const handleCurrentDown = useCallback(() => setCurrent(current - 1), [current]);
+  const handleCurrentDown = useCallback(() => setCurrent(current - 1), [current])
 
   return (
     <div className={home.blurContainer}>
@@ -40,19 +44,19 @@ const Popup = (props) => {
         <div className={home.dotBar}>
           {sortedPosts.length >= 2
             ? sortedPosts.map((post, x) =>
-                x === current ? (
-                  <div className={home.dotted} key={post._id}>
-                    <MdOutlineIncompleteCircle color="white" />
-                  </div>
-                ) : (
-                  <div
-                    className={home.blankCircle}
-                    onClick={handleCurrent}
-                    key={post._id}
-                    value={x}
-                  ></div>
-                )
+              x === current ? (
+                <div className={home.dotted} key={post._id}>
+                  <MdOutlineIncompleteCircle color="white" />
+                </div>
+              ) : (
+                <div
+                  className={home.blankCircle}
+                  onClick={handleCurrent}
+                  key={post._id}
+                  value={x}
+                ></div>
               )
+            )
             : null}
         </div>
         <div className={home.popup}>
@@ -86,7 +90,7 @@ const Popup = (props) => {
         ) : null}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Popup;
+export default Popup

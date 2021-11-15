@@ -1,13 +1,13 @@
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image'
+import Link from 'next/link'
 
 import {
   AiFillFacebook,
   AiFillBehanceSquare,
   AiOutlineInstagram,
-} from "react-icons/ai/";
-import logo from "../public/linhquach.svg";
-import home from "../styles/home.module.sass";
+} from 'react-icons/ai/'
+import logo from '../public/linhquach.svg'
+import home from '../styles/home.module.sass'
 import Clock from './Clock'
 
 export default function Home() {
@@ -90,5 +90,5 @@ export default function Home() {
         </div>
       </div>
     </main>
-  );
+  )
 }

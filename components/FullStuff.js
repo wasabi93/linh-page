@@ -1,11 +1,11 @@
-import home from "../styles/home.module.sass";
-import Clock from "./stuff/Clock";
-import Books from "./stuff/Books";
-import Lamb from "./stuff/Lamb";
-import Board from "./stuff/Board";
-import Photos from "./stuff/Photos";
-import NoteBook from "./stuff/NoteBooks";
-import Laptop from "./stuff/Laptop";
+import home from '../styles/home.module.sass'
+import Clock from './stuff/Clock'
+import Books from './stuff/Books'
+import Lamb from './stuff/Lamb'
+import Board from './stuff/Board'
+import Photos from './stuff/Photos'
+import NoteBook from './stuff/NoteBooks'
+import Laptop from './stuff/Laptop'
 
 export default function FullStuff(props) {
   const {
@@ -35,7 +35,7 @@ export default function FullStuff(props) {
     handleOpenPopupYellowRight,
     handleOpenPopupPink,
     handleOpenPopupNote,
-  } = props;
+  } = props
   return (
     <>
       <div className={home.bgContainer}>
@@ -85,5 +85,5 @@ export default function FullStuff(props) {
         <Laptop handleOpenPopupLaptop={handleOpenPopupLaptop} />
       </div>
     </>
-  );
+  )
 }

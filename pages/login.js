@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import LoginForm from "../components/admin/LoginForm";
+
+import LoginForm from '../components/admin/LoginForm'
 
 
 export default function Login() {
 
-    return (
-        <LoginForm />
-    )
+  return (
+    <LoginForm />
+  )
 }

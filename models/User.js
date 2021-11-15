@@ -1,11 +1,11 @@
 import mongoose from 'mongoose'
-import bcrypt from 'bcrypt'
+// import bcrypt from 'bcrypt'
 
-const SALT_WORK_FACTOR = 10
+// const SALT_WORK_FACTOR = 10
 
 const UserSchema = new mongoose.Schema({
-    username: { type: String, required: true, index: { unique: true } },
-    password: { type: String, required: true },
+  username: { type: String, required: true, index: { unique: true } },
+  password: { type: String, required: true },
 })
 
 // UserSchema.pre('save', function(next) {

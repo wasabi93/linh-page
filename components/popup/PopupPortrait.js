@@ -1,22 +1,23 @@
-import Image from "next/image";
-import { useState, useMemo, useCallback } from "react";
+import Image from 'next/image'
+import { useState, useMemo, useCallback } from 'react'
 
-import home from "../../styles/home.module.sass";
-import left from "../../public/stuff/arrow/left.png";
-import right from "../../public/stuff/arrow/right.png";
+import home from '../../styles/home.module.sass'
+import left from '../../public/stuff/arrow/left.png'
+import right from '../../public/stuff/arrow/right.png'
+
 
 export default function PopupPortrait(props) {
-  const { posts, handleClosePopup } = props;
-  const [current, setCurrent] = useState(0);
+  const { posts, handleClosePopup } = props
+  const [current, setCurrent] = useState(0)
 
   const sortedPosts = useMemo(
     () => posts.sort((a, b) => a.position - b.position),
-    []
-  );
+    [posts]
+  )
 
-  const handleCurrentUp = useCallback(() => setCurrent(current + 1), []);
+  const handleCurrentUp = useCallback(() => setCurrent(current + 1), [setCurrent,current])
 
-  const handleCurrentDown = useCallback(() => setCurrent(current - 1), []);
+  const handleCurrentDown = useCallback(() => setCurrent(current - 1), [setCurrent,current])
 
   return (
     <div className={home.blurContainer}>
@@ -59,5 +60,5 @@ export default function PopupPortrait(props) {
         ) : null}
       </div>
     </div>
-  );
+  )
 }

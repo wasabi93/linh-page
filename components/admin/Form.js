@@ -1,96 +1,96 @@
-import { useState, useEffect, useMemo, useCallback } from "react";
-import { useRouter } from "next/router";
-import { mutate } from "swr";
+import { useState, useEffect, useCallback } from 'react'
+import { useRouter } from 'next/router'
+import { mutate } from 'swr'
 
-import admin from "../../styles/admin.module.sass";
+import admin from '../../styles/admin.module.sass'
 
 export default function Form({ posts, currentId, setCurrentId }) {
-  const router = useRouter();
-  const contentType = "application/json";
+  const router = useRouter()
+  const contentType = 'application/json'
   const [form, setForm] = useState({
-    album: "",
-    description: "",
-    position: "",
-    name: "",
-    link: "",
+    album: '',
+    description: '',
+    position: '',
+    name: '',
+    link: '',
     likes: 0,
-  });
+  })
 
   const post = posts.filter((post) => post._id === currentId)
 
   const clear = useCallback(() => {
-    setCurrentId(0);
+    setCurrentId(0)
     setForm({
-      album: "",
-      description: "",
-      position: "",
-      name: "",
-      link: "",
+      album: '',
+      description: '',
+      position: '',
+      name: '',
+      link: '',
       likes: 0,
-    });
-  }, []);
+    })
+  }, [setForm, setCurrentId])
 
-  /* The PUT method edits an existing entry in the mongodb database. */
-  const putData = async (form) => {
-    try {
-      const res = await fetch(`/api/posts/${currentId}`, {
-        method: "PUT",
-        headers: {
-          Accept: contentType,
-          "Content-Type": contentType,
-        },
-        body: JSON.stringify(form),
-      });
-
-      // Throw error with status code in case Fetch API req failed
-      if (!res.ok) {
-        throw new Error(res.status);
-      }
-
-      const { data } = await res.json();
-      router.push("/admin");
-      mutate(`/api/posts/${currentId}`, data, false); // Update the local data without a revalidation
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  /* The POST method adds a new entry in the mongodb database. */
-  const postData = async (form) => {
-    try {
-      const res = await fetch("/api/posts", {
-        method: "POST",
-        headers: {
-          Accept: contentType,
-          "Content-Type": contentType,
-        },
-        body: JSON.stringify(form),
-      });
-
-      // Throw error with status code in case Fetch API req failed
-      if (!res.ok) {
-        throw new Error(res.status);
-      }
-      router.push("/admin");
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   const handleSummit = useCallback(
     (e) => {
-      e.preventDefault();
-      currentId === 0 ? postData(form) : putData(form);
-      setCurrentId(0);
-      clear();
+      /* The PUT method edits an existing entry in the mongodb database. */
+      const putData = async (form) => {
+        try {
+          const res = await fetch(`/api/posts/${currentId}`, {
+            method: 'PUT',
+            headers: {
+              Accept: contentType,
+              'Content-Type': contentType,
+            },
+            body: JSON.stringify(form),
+          })
+
+          // Throw error with status code in case Fetch API req failed
+          if (!res.ok) {
+            throw new Error(res.status)
+          }
+
+          const { data } = await res.json()
+          router.push('/admin')
+          mutate(`/api/posts/${currentId}`, data, false) // Update the local data without a revalidation
+        } catch (error) {
+          console.log(error)
+        }
+      }
+      /* The POST method adds a new entry in the mongodb database. */
+      const postData = async (form) => {
+        try {
+          const res = await fetch('/api/posts', {
+            method: 'POST',
+            headers: {
+              Accept: contentType,
+              'Content-Type': contentType,
+            },
+            body: JSON.stringify(form),
+          })
+
+          // Throw error with status code in case Fetch API req failed
+          if (!res.ok) {
+            throw new Error(res.status)
+          }
+          router.push('/admin')
+        } catch (error) {
+          console.log(error)
+        }
+      }
+      e.preventDefault()
+      currentId === 0 ? postData(form) : putData(form)
+      setCurrentId(0)
+      clear()
     },
-    [form]
-  );
+    [setCurrentId, clear, currentId, form, router]
+  )
 
   console.log(form)
 
   useEffect(() => {
-    if (currentId !== 0) return setForm(post[0]);
-  }, [post[0]]);
+    if (currentId !== 0) return setForm(post[0])
+  }, [currentId,post])
 
   return (
     <form
@@ -100,7 +100,7 @@ export default function Form({ posts, currentId, setCurrentId }) {
       onSubmit={handleSummit}
     >
       <div className={admin.title}>
-        {currentId === 0 ? `Create Post` : `Editing ${form.name}`}
+        {currentId === 0 ? 'Create Post' : `Editing ${form.name}`}
       </div>
       <label htmlFor="album">Choose an album:</label>
       <select
@@ -166,11 +166,11 @@ export default function Form({ posts, currentId, setCurrentId }) {
         onChange={(e) => setForm({ ...form, link: e.target.value })}
       />
       <div className={admin.button}>
-        <button type="submit">{currentId === 0 ? `Submit` : `Edit`}</button>
+        <button type="submit">{currentId === 0 ? 'Submit' : 'Edit'}</button>
         <button type="button" onClick={clear}>
           Clear
         </button>
       </div>
     </form>
-  );
+  )
 }

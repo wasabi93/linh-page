@@ -1,9 +1,9 @@
-import Image from "next/image";
+import Image from 'next/image'
 
-import home from "../../styles/home.module.sass";
+import home from '../../styles/home.module.sass'
 
 export default function PopupLaptop(props) {
-  const { posts, handleClosePopup } = props;
+  const { posts, handleClosePopup } = props
   return (
     <div className={home.blurContainer}>
       <div className={home.blur}>
@@ -27,5 +27,5 @@ export default function PopupLaptop(props) {
         <div className={home.blocker} onClick={handleClosePopup}></div>
       </div>
     </div>
-  );
+  )
 }

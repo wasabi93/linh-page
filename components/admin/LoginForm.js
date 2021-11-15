@@ -1,37 +1,37 @@
-import React, { useState, useCallback } from "react";
-import { login } from "../../lib/auth";
+import React, { useState, useCallback } from 'react'
+import { login } from '../../lib/auth'
 
-import form from "../../styles/form.module.sass";
+import form from '../../styles/form.module.sass'
 
 export default function LoginForm() {
-  const [user, setUser] = useState({ user: "", password: "" });
-  const contentType = "application/json";
+  const [user, setUser] = useState({ user: '', password: '' })
+  const contentType = 'application/json'
 
   const getUser = async (user) => {
     try {
-      const res = await fetch("/api/login", {
-        method: "POST",
+      const res = await fetch('/api/login', {
+        method: 'POST',
         headers: {
           Accept: contentType,
-          "Content-Type": contentType,
+          'Content-Type': contentType,
         },
         body: JSON.stringify(user),
-      });
+      })
 
       // Throw error with status code in case Fetch API req failed
       if (res.status === 200) {
-        const { token } = await res.json();
-        login({ token }, true);
+        const { token } = await res.json()
+        login({ token }, true)
       }
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
-  };
+  }
 
   const handleSubmit = useCallback((e) => {
-    e.preventDefault();
-    getUser(user);
-  }, [user]);
+    e.preventDefault()
+    getUser(user)
+  }, [user])
 
   return (
     <div className={form.loginContainer}>
@@ -69,5 +69,5 @@ export default function LoginForm() {
         </div>
       </form>
     </div>
-  );
+  )
 }

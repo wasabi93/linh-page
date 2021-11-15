@@ -1,14 +1,14 @@
-import Head from "next/head";
-import dynamic from "next/dynamic";
+import Head from 'next/head'
+import dynamic from 'next/dynamic'
 
-import dbConnect from "../lib/dbConnect";
-import Post from "../models/Post.js";
+import dbConnect from '../lib/dbConnect'
+import Post from '../models/Post.js'
 
-import home from "../styles/home.module.sass";
-import Loader from "../components/Loader";
-const Home = dynamic(() => import("../components/Home"), {
+import home from '../styles/home.module.sass'
+import Loader from '../components/Loader'
+const Home = dynamic(() => import('../components/Home'), {
   loading: () => <Loader />,
-});
+})
 
 const HomePage = ({ posts }) => {
   return (
@@ -28,22 +28,23 @@ const HomePage = ({ posts }) => {
       </Head>
       <Home posts={posts} />
     </div>
-  );
-};
+  )
+}
 
 /* Retrieves pet(s) data from mongodb database */
 export async function getServerSideProps() {
-  await dbConnect();
+  const db = await dbConnect()
 
   /* find all the data in our database */
-  const result = await Post.find({});
+  const result = await Post.find({})
   const posts = result.map((doc) => {
-    const post = doc.toObject();
-    post._id = post._id.toString();
-    return post;
-  });
+    const post = doc.toObject()
+    post._id = post._id.toString()
+    return post
+  })
 
-  return { props: { posts: posts } };
+  db.connection.close()
+  return { props: { posts: posts } }
 }
 
-export default HomePage;
+export default HomePage

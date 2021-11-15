@@ -1,36 +1,36 @@
-import Image from "next/image";
-import moment from "moment";
-import { useState, useMemo, useCallback } from "react";
+import Image from 'next/image'
+import moment from 'moment'
+import { useState, useMemo, useCallback } from 'react'
 
-import admin from "../../styles/admin.module.sass";
+import admin from '../../styles/admin.module.sass'
 
 const PostAdmin = ({ post, setCurrentId }) => {
-  const [popupDelete, setPopupDelete] = useState(false);
+  const [popupDelete, setPopupDelete] = useState(false)
 
-  const imageUrl = useMemo(() => post.link, []);
+  const imageUrl = useMemo(() => post.link, [post])
 
   const handlePopupDelete = useCallback(() => {
-    setPopupDelete(!popupDelete);
-  }, [popupDelete]);
+    setPopupDelete(!popupDelete)
+  }, [popupDelete])
 
   const handleDelete = async () => {
     try {
       await fetch(`/api/posts/${post._id}`, {
-        method: "Delete",
-      });
+        method: 'Delete',
+      })
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
-    setPopupDelete(!popupDelete);
-  };
+    setPopupDelete(!popupDelete)
+  }
 
-  const handleEdit = useCallback(() => setCurrentId(post._id), []);
+  const handleEdit = useCallback(() => setCurrentId(post._id), [setCurrentId,post])
 
   return (
     <div className={admin.post}>
       <p className={admin.name}>Name: {post.name}</p>
       <div className={admin.imageBox}>
-        {imageUrl.includes("/") ? (
+        {imageUrl.includes('/') ? (
           <Image src={imageUrl} alt="" height="90" width="160" />
         ) : (
           <div>** wrong image url **</div>
@@ -52,7 +52,7 @@ const PostAdmin = ({ post, setCurrentId }) => {
           <div className={admin.blur}>
             <div className={admin.popup}>
               <p>Ché chắc chứ???</p>
-              <p>Xóa hình "{post.name}" nhóe???</p>
+              <p>Xóa hình name:{post.name} nhóe???</p>
               <div className={admin.buttonPopup}>
                 <button onClick={handleDelete}>Yes</button>
                 <button onClick={handlePopupDelete}>No</button>
@@ -63,7 +63,7 @@ const PostAdmin = ({ post, setCurrentId }) => {
         </div>
       ) : null}
     </div>
-  );
-};
+  )
+}
 
-export default PostAdmin;
+export default PostAdmin
