@@ -26,8 +26,6 @@ const AdminPage = () => {
     }
   }, [])
 
-  console.log(posts)
-
   return (
     <div className={admin.container}>
       <Head>
