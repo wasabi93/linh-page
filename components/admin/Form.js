@@ -132,7 +132,6 @@ export default function Form({ posts, currentId, setCurrentId }) {
         placeholder="name..."
         name="name"
         value={form.name}
-        required
         onChange={(e) => setForm({ ...form, name: e.target.value })}
       />
       <input
@@ -141,7 +140,6 @@ export default function Form({ posts, currentId, setCurrentId }) {
         placeholder="position..."
         name="position"
         value={form.position}
-        required
         onChange={(e) => setForm({ ...form, position: e.target.value })}
       />
       <input
@@ -159,7 +157,6 @@ export default function Form({ posts, currentId, setCurrentId }) {
         placeholder="Image-Url..."
         name="link"
         value={form.link}
-        required
         onChange={(e) => setForm({ ...form, link: e.target.value })}
       />
       <div className={admin.button}>

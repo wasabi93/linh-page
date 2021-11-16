@@ -43,7 +43,7 @@ export async function getServerSideProps() {
     return post
   })
 
-  return { props: { data: posts } }
+  return { props: { posts: posts } }
 }
 
 export default HomePage
