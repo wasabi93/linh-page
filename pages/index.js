@@ -1,16 +1,22 @@
 import Head from 'next/head'
 import dynamic from 'next/dynamic'
+import { useState, useEffect } from 'react'
 
 import dbConnect from '../lib/dbConnect'
 import Post from '../models/Post.js'
 
 import home from '../styles/home.module.sass'
 import Loader from '../components/Loader'
-const Home = dynamic(() => import('../components/Home'), {
-  loading: () => <Loader />,
-})
+const Home = dynamic(() => import('../components/Home'))
 
 const HomePage = ({ posts }) => {
+  const [loading, setLoading] = useState(true)
+  useEffect(() =>
+    setTimeout(() =>
+      setLoading(false)
+    , 2000)
+  , [setLoading])
+
   return (
     <div className={home.container}>
       <Head>
@@ -26,7 +32,7 @@ const HomePage = ({ posts }) => {
           crossOrigin=""
         />
       </Head>
-      <Home posts={posts} />
+      {loading ? <Loader /> : <Home posts={posts} />}
     </div>
   )
 }
