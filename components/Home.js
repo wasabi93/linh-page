@@ -1,11 +1,12 @@
 import React, { useState, useMemo, useCallback } from 'react'
+import dynamic from 'next/dynamic'
 
 import home from '../styles/home.module.sass'
-import FullStuff from './FullStuff'
-import Popup from './popup/Popup'
-import PopupLaptop from './popup/PopupLaptop'
-import PopupList from './popup/PopupList'
-import PopupPortrait from './popup/PopupPortrait'
+const FullStuff = dynamic(() => import('./FullStuff'))
+const Popup = dynamic(() => import('./popup/Popup'))
+const PopupLaptop = dynamic(() => import('./popup/PopupLaptop'))
+const PopupList = dynamic(() => import('./popup/PopupList'))
+const PopupPortrait = dynamic(() => import('./popup/PopupPortrait'))
 
 export default function Home({ posts }) {
   const [showPopup, setShowPopup] = useState(false)
